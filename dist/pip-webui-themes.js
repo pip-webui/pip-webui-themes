@@ -3,7 +3,6 @@
 (function () {
     'use strict';
     angular.module('pipTheme', [
-        'pipTheme.Default', 
         'pipTheme.Run', 
         'pipTheme.Factory'
     ]);
@@ -84,22 +83,22 @@
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
-    var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
+    var thisModule = angular.module('pipTheme.Bootbarn.Green', ['ngMaterial']);
 
     thisModule.config(config);
     
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
-            green: 'Green'
+            'bootbarn-green': 'Green'
         });
         
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
-            green: 'Зеленая'
+            'bootbarn-green': 'Зеленая'
         });
         
-        registerGreenTheme('green');
+        registerGreenTheme('bootbarn-green');
         $mdThemingProvider.alwaysWatchTheme(true);
         
         function registerGreenTheme(themeName) {

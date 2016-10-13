@@ -5,11 +5,11 @@
 
     var content = [
         { title: 'Default', state: 'default', url: '/default', controller: 'ThemesController', templateUrl: 'themes_default.html' },
-        { title: 'Bootbarn colors', state: 'bootbarn', url: '/bootbarn', controller: 'ThemesController', templateUrl: 'themes_default.html'}
+        { title: 'Bootbarn colors', state: 'bootbarn', url: '/bootbarn', controller: 'ThemesBootbarnController', templateUrl: 'themes_default.html'}
     ];
 
 
-    var thisModule = angular.module('app', ['ngMaterial', 'appThemesDefault']);
+    var thisModule = angular.module('app', ['ngMaterial', 'appThemesDefault', 'appThemesBootbarn']);
 
     thisModule.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider) {
 
@@ -27,6 +27,7 @@
     thisModule.controller('AppController', 
         function ($scope, $rootScope, $state, $mdSidenav) {
             
+            $scope.content = content;
             $scope.onThemeClick = function(theme) {
                 $rootScope.$theme = theme;
             };
