@@ -1,4 +1,4 @@
-# Pip.WebUI. Themes  Changelog
+# Pip.WebUI.Themes  Changelog
 
 ## <a name="1.0.0"></a> 1.0.0 (2016-07-30)
 
