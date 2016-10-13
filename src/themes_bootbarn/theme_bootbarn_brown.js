@@ -1,48 +1,48 @@
 (function () {
     'use strict';
-    var thisModule = angular.module('pipTheme.Bootbarn.Green', ['ngMaterial']);
+    var thisModule = angular.module('pipTheme.Bootbarn.Brown', ['ngMaterial']);
 
     thisModule.config(config);
     
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
-            'bootbarn-green': 'Green'
+            'bootbarn-brown': 'Brown'
         });
         
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
-            'bootbarn-green': 'Зеленая'
+            'bootbarn-brown': 'Brown'
         });
         
-        registerGreenTheme('bootbarn-green');
+        registerBrownTheme('bootbarn-brown');
         $mdThemingProvider.alwaysWatchTheme(true);
         
-        function registerGreenTheme(themeName) {
-            var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+        function registerBrownTheme(themeName) {
+            var brownBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
                 'A100': 'rgba(231, 231, 231, 1)',
                 'A200': 'rgba(76, 175, 80, 1)'
             });
-            $mdThemingProvider.definePalette('green-background', greenBackgroundPalette);
+            $mdThemingProvider.definePalette('brown-background', brownBackgroundPalette);
 
-            var greenPrimaryPalette = $mdThemingProvider.extendPalette('green', {
+            var brownPrimaryPalette = $mdThemingProvider.extendPalette('brown', {
                 '300':'#9ed4a1',
                 'contrastLightColors': ['500', '300']
             });
-            $mdThemingProvider.definePalette('green-primary', greenPrimaryPalette);
+            $mdThemingProvider.definePalette('brown-primary', brownPrimaryPalette);
 
 
-            var greenAccentPalette = $mdThemingProvider.extendPalette('amber', {
+            var brownAccentPalette = $mdThemingProvider.extendPalette('amber', {
                 'contrastLightColors': ['A700']
             });
-            $mdThemingProvider.definePalette('green-accent', greenAccentPalette);
+            $mdThemingProvider.definePalette('brown-accent', brownAccentPalette);
 
             $mdThemingProvider.theme(themeName)
-                .primaryPalette('green-primary', {
+                .primaryPalette('brown-primary', {
                     'default': '500',
                     'hue-1': '300'
                 })
-                .backgroundPalette('green-background', {
+                .backgroundPalette('brown-background', {
                     'default': '50',  // background
                     'hue-1': 'A200',  // tiles dialog
                     'hue-2': 'A700'   // app bar
@@ -50,7 +50,7 @@
                 .warnPalette('red', {
                     'default': 'A200'
                 })
-                .accentPalette('green-accent', {
+                .accentPalette('brown-accent', {
                     'default': 'A700'
                 });
         }

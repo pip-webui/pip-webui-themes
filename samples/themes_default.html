@@ -3,7 +3,7 @@
 @copyright Digital Living Software Corp. 2014-2015
 -->
 
-<md-select ng-model="localTheme" ng-change="saveChanges(localTheme)" class="w-stretch tp0 tm0 theme-text-primary"
+<md-select ng-model="$theme" ng-change="saveChanges($theme)" class="w-stretch tp0 tm0 theme-text-primary"
            ng-disabled="transaction.busy()"
            placeholder="'THEME'">
     <md-option ng-value="theme" ng-repeat="theme in themes" ng-selected="$theme == theme ? true : false">{{ theme}}

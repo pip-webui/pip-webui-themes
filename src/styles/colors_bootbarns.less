@@ -1,0 +1,30 @@
+// @file Composition of color styles
+// @copyright Digital Living Software Corp. 2014-2015
+
+// Themes Pallette Colors
+//------------------------------
+@import "colors_var";
+@import "colors_mixins";
+
+@color-bootbarn-brown-primary:                   rgba(177, 55, 34, 1);
+@color-bootbarn-brown-accent:                    rgba(127, 148, 92, 1);
+@color-bootbarn-brown-hue:                       rgba(177, 55, 34, .54);
+@color-bootbarn-brown-accent-hue:                rgba(127, 148, 92, .54);
+
+@color-bootbarn-brown-theme:
+        @color-bootbarn-brown-primary // 1
+        @color-bootbarn-brown-accent  // 2
+        @color-bootbarn-brown-hue     // 3
+        @color-primary      // 4
+        @color-secondary    // 5
+        @color-badge        // 6
+        @color-divider      // 7
+        @color-toast        // 8
+        @color-badge       // 9
+        @color-content
+        @color-window
+        @color-bootbarn-brown-accent-hue;
+
+
+.generate-theme(bootbarn-brown, @color-bootbarn-brown-theme);
+
