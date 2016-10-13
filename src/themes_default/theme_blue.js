@@ -3,7 +3,7 @@
     var thisModule = angular.module('pipTheme.Blue', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -13,7 +13,7 @@
             THEME: 'Тема',
             blue: 'Голубая'
         });
-        
+
         registerBlueTheme('default');
         registerBlueTheme('blue');
 

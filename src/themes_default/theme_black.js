@@ -3,7 +3,7 @@
     var thisModule = angular.module('pipTheme.Black', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',

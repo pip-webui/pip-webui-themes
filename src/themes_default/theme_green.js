@@ -3,21 +3,21 @@
     var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
             green: 'Green'
         });
-        
+
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             green: 'Зеленая'
         });
-        
+
         registerGreenTheme('green');
         $mdThemingProvider.alwaysWatchTheme(true);
-        
+
         function registerGreenTheme(themeName) {
             var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
                 'A100': 'rgba(231, 231, 231, 1)',
@@ -26,7 +26,7 @@
             $mdThemingProvider.definePalette('green-background', greenBackgroundPalette);
 
             var greenPrimaryPalette = $mdThemingProvider.extendPalette('green', {
-                '300':'#9ed4a1',
+                '300': '#9ed4a1',
                 'contrastLightColors': ['500', '300']
             });
             $mdThemingProvider.definePalette('green-primary', greenPrimaryPalette);

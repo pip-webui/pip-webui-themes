@@ -3,7 +3,7 @@
     var thisModule = angular.module('pipTheme.Pink', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -12,9 +12,9 @@
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             pink: 'Розовая',
-            
+
         });
-        
+
         registerPinkTheme('pink');
         $mdThemingProvider.alwaysWatchTheme(true);
 

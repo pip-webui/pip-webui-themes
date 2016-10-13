@@ -3,7 +3,7 @@
     var thisModule = angular.module('pipTheme.Amber', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -13,10 +13,10 @@
             THEME: 'Тема',
             amber: 'Янтарная'
         });
-        
+
         registerAmberTheme('amber');
         $mdThemingProvider.alwaysWatchTheme(true);
-        
+
         function registerAmberTheme(themeName) {
             var orangeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
                 'A100': 'rgba(231, 231, 231, 1)',

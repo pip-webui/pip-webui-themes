@@ -3,7 +3,7 @@
     var thisModule = angular.module('pipTheme.Navy', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -13,7 +13,7 @@
             THEME: 'Тема',
             navy: 'Сине-серая'
         });
-        
+
         registerNavyTheme('navy');
         $mdThemingProvider.alwaysWatchTheme(true);
 
@@ -26,7 +26,7 @@
             $mdThemingProvider.definePalette('grey', greyPalette);
 
             var tealPalette = $mdThemingProvider.extendPalette('teal', {
-                'contrastLightColors': [ '500', '600', '700', '800', '900', 'A700']
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
             });
             $mdThemingProvider.definePalette('teal', tealPalette);
 

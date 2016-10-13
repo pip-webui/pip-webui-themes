@@ -3,12 +3,13 @@
     var thisModule = angular.module('pipTheme.Grey', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
             grey: 'Grey'
         });
+        
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             grey: 'Серая'
@@ -26,7 +27,7 @@
                 'A700': '#90A4AE',
                 //'800': '',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': [ '300', '400', '500', '600', '700', '800', '900', 'A700']
+                'contrastLightColors': ['300', '400', '500', '600', '700', '800', '900', 'A700']
             });
             $mdThemingProvider.definePalette('third-party', thirdPartyPalette);
 

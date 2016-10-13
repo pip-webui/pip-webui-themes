@@ -82,50 +82,59 @@
 
 (function () {
     'use strict';
+    angular.module('pipTheme.Bootbarn', [
+        'pipTheme.Bootbarn.Brown'
+    ]);
+})();
+
+(function () {
+    'use strict';
     config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
-    var thisModule = angular.module('pipTheme.Bootbarn.Green', ['ngMaterial']);
+    var thisModule = angular.module('pipTheme.Bootbarn.Brown', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
-            'bootbarn-green': 'Green'
+            'bootbarn-brown': 'Brown'
         });
-        
+
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
-            'bootbarn-green': 'Зеленая'
+            'bootbarn-brown': 'Brown'
         });
-        
-        registerGreenTheme('bootbarn-green');
-        $mdThemingProvider.alwaysWatchTheme(true);
-        
-        function registerGreenTheme(themeName) {
-            var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-                'A100': 'rgba(231, 231, 231, 1)',
-                'A200': 'rgba(76, 175, 80, 1)'
-            });
-            $mdThemingProvider.definePalette('green-background', greenBackgroundPalette);
 
-            var greenPrimaryPalette = $mdThemingProvider.extendPalette('green', {
-                '300':'#9ed4a1',
+        registerBrownTheme('bootbarn-brown');
+        $mdThemingProvider.alwaysWatchTheme(true);
+
+        function registerBrownTheme(themeName) {
+            var brownBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+                'A100': 'rgba(177, 55, 34, 1)',
+                'A200': 'rgba(177, 55, 34, 1)'
+            });
+            $mdThemingProvider.definePalette('brown-background', brownBackgroundPalette);
+
+            var brownPrimaryPalette = $mdThemingProvider.extendPalette('brown', {
+                '300': 'rgba(177, 55, 34, .54)',
+                '500': 'rgba(177, 55, 34, 1)',
                 'contrastLightColors': ['500', '300']
             });
-            $mdThemingProvider.definePalette('green-primary', greenPrimaryPalette);
+            $mdThemingProvider.definePalette('brown-primary', brownPrimaryPalette);
 
 
-            var greenAccentPalette = $mdThemingProvider.extendPalette('amber', {
+            var brownAccentPalette = $mdThemingProvider.extendPalette('amber', {
+                'A700': 'rgba(127, 148, 92, 1)',
                 'contrastLightColors': ['A700']
             });
-            $mdThemingProvider.definePalette('green-accent', greenAccentPalette);
+            $mdThemingProvider.definePalette('brown-accent', brownAccentPalette);
 
             $mdThemingProvider.theme(themeName)
-                .primaryPalette('green-primary', {
+                .primaryPalette('brown-primary', {
                     'default': '500',
                     'hue-1': '300'
                 })
-                .backgroundPalette('green-background', {
+                .backgroundPalette('brown-background', {
                     'default': '50',  // background
                     'hue-1': 'A200',  // tiles dialog
                     'hue-2': 'A700'   // app bar
@@ -133,7 +142,7 @@
                 .warnPalette('red', {
                     'default': 'A200'
                 })
-                .accentPalette('green-accent', {
+                .accentPalette('brown-accent', {
                     'default': 'A700'
                 });
         }
@@ -143,11 +152,11 @@
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
-    var thisModule = angular.module('pipTheme.Default', ['ngMaterial', 'pipTheme.Blue',  'pipTheme.Pink',
+    var thisModule = angular.module('pipTheme.Default', ['ngMaterial', 'pipTheme.Blue', 'pipTheme.Pink',
         'pipTheme.Amber', 'pipTheme.Orange', 'pipTheme.Green', 'pipTheme.Navy', 'pipTheme.Grey']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme'
@@ -155,10 +164,10 @@
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема'
         });
-        
+
         $mdThemingProvider.setDefaultTheme('default');
         $mdThemingProvider.alwaysWatchTheme(true);
-        
+
     }
 })();
 
@@ -168,7 +177,7 @@
     var thisModule = angular.module('pipTheme.Amber', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -178,10 +187,10 @@
             THEME: 'Тема',
             amber: 'Янтарная'
         });
-        
+
         registerAmberTheme('amber');
         $mdThemingProvider.alwaysWatchTheme(true);
-        
+
         function registerAmberTheme(themeName) {
             var orangeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
                 'A100': 'rgba(231, 231, 231, 1)',
@@ -221,7 +230,7 @@
     var thisModule = angular.module('pipTheme.Black', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -305,7 +314,7 @@
     var thisModule = angular.module('pipTheme.Blue', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -315,7 +324,7 @@
             THEME: 'Тема',
             blue: 'Голубая'
         });
-        
+
         registerBlueTheme('default');
         registerBlueTheme('blue');
 
@@ -366,21 +375,21 @@
     var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
             green: 'Green'
         });
-        
+
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             green: 'Зеленая'
         });
-        
+
         registerGreenTheme('green');
         $mdThemingProvider.alwaysWatchTheme(true);
-        
+
         function registerGreenTheme(themeName) {
             var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
                 'A100': 'rgba(231, 231, 231, 1)',
@@ -389,7 +398,7 @@
             $mdThemingProvider.definePalette('green-background', greenBackgroundPalette);
 
             var greenPrimaryPalette = $mdThemingProvider.extendPalette('green', {
-                '300':'#9ed4a1',
+                '300': '#9ed4a1',
                 'contrastLightColors': ['500', '300']
             });
             $mdThemingProvider.definePalette('green-primary', greenPrimaryPalette);
@@ -426,12 +435,13 @@
     var thisModule = angular.module('pipTheme.Grey', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
             grey: 'Grey'
         });
+        
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             grey: 'Серая'
@@ -449,7 +459,7 @@
                 'A700': '#90A4AE',
                 //'800': '',
                 'contrastDefaultColor': 'dark',
-                'contrastLightColors': [ '300', '400', '500', '600', '700', '800', '900', 'A700']
+                'contrastLightColors': ['300', '400', '500', '600', '700', '800', '900', 'A700']
             });
             $mdThemingProvider.definePalette('third-party', thirdPartyPalette);
 
@@ -480,7 +490,7 @@
     var thisModule = angular.module('pipTheme.Navy', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -490,7 +500,7 @@
             THEME: 'Тема',
             navy: 'Сине-серая'
         });
-        
+
         registerNavyTheme('navy');
         $mdThemingProvider.alwaysWatchTheme(true);
 
@@ -503,7 +513,7 @@
             $mdThemingProvider.definePalette('grey', greyPalette);
 
             var tealPalette = $mdThemingProvider.extendPalette('teal', {
-                'contrastLightColors': [ '500', '600', '700', '800', '900', 'A700']
+                'contrastLightColors': ['500', '600', '700', '800', '900', 'A700']
             });
             $mdThemingProvider.definePalette('teal', tealPalette);
 
@@ -590,7 +600,7 @@
     var thisModule = angular.module('pipTheme.Pink', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
@@ -599,9 +609,9 @@
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             pink: 'Розовая',
-            
+
         });
-        
+
         registerPinkTheme('pink');
         $mdThemingProvider.alwaysWatchTheme(true);
 
