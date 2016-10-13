@@ -28,18 +28,11 @@
     <script src="../lib/pip-webui-core.js"></script>
 
     <script src="../dist/pip-webui-themes.js"></script>
-    <script src="themes.js"></script>
+    <script src="themes_default.js"></script>
+    <script src="index.js"></script>
 
-    <script>
-        app = angular.module('app', ['ngMaterial', 'appThemes']);
-    </script>
 </head>
-<body ng-app="app" class="layout-column layout-align-start-center" ng-controller="ThemesController">
-
-<!--
-@file Themes
-@copyright Digital Living Software Corp. 2014-2015
--->
+<body ng-app="app" class="layout-column layout-align-start-center {{$theme}}" ng-controller="AppController">
 
 <md-toolbar ng-if="!$partialReset">
     <div class="md-toolbar-tools">
@@ -63,43 +56,22 @@
         </md-menu>
     </div>
 </md-toolbar>
-<md-select ng-model="localTheme" ng-change="saveChanges(localTheme)" class="w-stretch tp0 tm0 theme-text-primary"
-           ng-disabled="transaction.busy()"
-           placeholder="'THEME'">
-    <md-option ng-value="theme" ng-repeat="theme in themes" ng-selected="$theme == theme ? true : false">{{ theme}}
-    </md-option>
-</md-select>
+<div class="layout-row flex" style="height: calc(100% - 64px); width: 100%">
+    <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')"
+                class="md-whiteframe-z2 md-sidenav-left layout-column color-content-bg">
+        <md-list>
+            <md-list-item ng-repeat="contentItem in content"
+                          ng-click="onSwitchPage(contentItem.state)"
+                          ng-class="{ 'selected-state': isActiveState(contentItem.state) }">
+                <p ui-sref="{{contentItem.state}}">{{contentItem.title}}</p>
+            </md-list-item>
+        </md-list>
+    </md-sidenav>
 
-
-<div>
-    <div class="color-primary"> color-primary</div>
-    <div class="color-primary-bg"> color-primary-bg</div>
-    <div class="color-accent"> color-accent</div>
-    <div class="color-accent-bg"> color-accent-bg</div>
-    <div class="color-hue"> color-hue</div>
-    <div class="color-hue-bg"> color-hue-bg</div>
-    <div class="color-primary-text"> color-primary-text</div>
-    <div class="color-secondary-text"> color-secondary-text</div>
-    <div class="color-divider"> color-divider</div>
-    <div class="color-error"> color-error</div>
-    <div class="color-badge"> color-badge</div>
-    <div class="color-toast"> color-toast</div>
-    <div class="color-content-bg"> color-content-bg</div>
-    <div class="color-window-bg"> color-window-bg</div>
+    <md-content id="content" class="flex p16">
+        <div ui-view></div>
+    </md-content>
 </div>
 
-<div class="bm16 ">
-    <md-button md-no-ink class="md-primary">Primary (md-noink)</md-button>
-    <md-button ng-disabled="true" class="md-primary">Disabled</md-button>
-    <md-button class="md-warn">Title</md-button>
-</div>
-
-<div class="bm16 ">
-    <md-button class="md-primary md-hue-1">Primary Hue 1</md-button>
-    <md-button class="md-warn md-raised md-hue-2">Warn Hue 2</md-button>
-    <md-button class="md-accent">Accent</md-button>
-    <md-button class="md-raised">Raised</md-button>
-    <md-button class="md-accent md-raised">Accent Hue 1</md-button>
-</div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 (function () {
     'use strict';
 
-    var thisModule = angular.module('appThemes', ['pipCore' , 'pipTheme']);
+    var thisModule = angular.module('appThemesDefault', ['pipCore' , 'pipTheme']);
 
     thisModule.controller('ThemesController',
         function ($scope, $mdTheming, pipTheme, $state, $rootScope, $timeout) {

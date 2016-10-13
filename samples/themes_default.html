@@ -3,35 +3,12 @@
 @copyright Digital Living Software Corp. 2014-2015
 -->
 
-<md-toolbar ng-if="!$partialReset">
-    <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="menu"
-                   ng-click="onToggleMenu()" hide-gt-sm>
-            <md-icon md-svg-icon="icons:menu"></md-icon>
-        </md-button>
-        <span>{{'THEME' |translate}}</span>
-        <md-menu md-position-mode="target-right target">
-                <span class="pip-appbar-language"
-                      ng-click="$mdOpenMenu()"
-                      aria-label="language selection">
-                    {{ $language | translate}}
-                    <md-icon md-svg-icon="icons:triangle-down"></md-icon>
-                </span>
-            <md-menu-content width="3">
-                <md-menu-item ng-repeat="lang in languages">
-                    <md-button ng-click="onLanguageClick(lang)">{{lang | translate}}</md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
-    </div>
-</md-toolbar>
 <md-select ng-model="localTheme" ng-change="saveChanges(localTheme)" class="w-stretch tp0 tm0 theme-text-primary"
            ng-disabled="transaction.busy()"
            placeholder="'THEME'">
     <md-option ng-value="theme" ng-repeat="theme in themes" ng-selected="$theme == theme ? true : false">{{ theme}}
     </md-option>
 </md-select>
-
 
 <div>
     <div class="color-primary"> color-primary</div>
