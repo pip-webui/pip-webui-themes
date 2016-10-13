@@ -2,8 +2,7 @@
 
 (function () {
     'use strict';
-    var thisModule = angular.module('pipTheme', [
-        'ngMaterial',
+    angular.module('pipTheme', [
         'pipTheme.Default', 
         'pipTheme.Run', 
         'pipTheme.Factory'

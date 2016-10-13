@@ -1,13 +1,13 @@
 module.exports = {
     module: {
-        name: 'pipCore',
-        styles: 'core'
+        name: 'pipThemes',
+        styles: 'theme'
     },
     build: {
         js: true,
         ts: true,
         html: false,
-        css: false,
+        css: true,
         lib: true,
         images: false,
         dist: false

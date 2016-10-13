@@ -2,15 +2,12 @@
 
 (function () {
     'use strict';
-    var thisModule = angular.module('pipTheme', [
-        'ngMaterial',
+    angular.module('pipTheme', [
         'pipTheme.Default', 
         'pipTheme.Run', 
         'pipTheme.Factory'
     ]);
 })();
-
-
 
 (function () {
     'use strict';
@@ -87,9 +84,8 @@
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
-    var thisModule = angular.module('pipTheme.Default', ['ngMaterial', 'pipTheme.Blue',
-        'pipTheme.Pink', 'pipTheme.Amber', 'pipTheme.Orange', 'pipTheme.Green', 'pipTheme.Navy',
-        'pipTheme.Grey']);
+    var thisModule = angular.module('pipTheme.Default', ['ngMaterial', 'pipTheme.Blue',  'pipTheme.Pink',
+        'pipTheme.Amber', 'pipTheme.Orange', 'pipTheme.Green', 'pipTheme.Navy', 'pipTheme.Grey']);
 
     thisModule.config(config);
     

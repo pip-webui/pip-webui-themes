@@ -2,15 +2,7 @@
 
 ![](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Pip.WebUI.Core module contains critical mechanisms that the entire framework is based on.
-
-* Functions (utilities, tags, dates, form errors)
-* Localization and data formatting
-* Handling errors and client-side transactions
-* Routing
-* Drag & drop
-* Infinite scroll
-* List selections
+Pip.WebUI.Themes module contains critical mechanisms that the entire framework is based on.
 
 And more... Please, look at [User's guide](https://github.com/pip-webui/pip-webui-core/blob/master/doc/UsersGuide.md) for details.
 

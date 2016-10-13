@@ -1,5 +1,3 @@
-
-
 (function () {
     'use strict';
     var thisModule = angular.module('pipTheme.Factory', ['ngMaterial']);
