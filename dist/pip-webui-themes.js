@@ -2,6 +2,9 @@
 
 (function () {
     'use strict';
+    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    run.$inject = ['localStorageService', 'pipTheme', '$rootScope'];
+    ThemeFactory.$inject = ['localStorageService', '$mdTheming', '$rootScope', '$timeout', '$state', '$stateParams'];
     var thisModule = angular.module('pipTheme', ['ngMaterial']);
 
     thisModule.config(config);
@@ -404,3 +407,5 @@
         };
     }
 })();
+
+//# sourceMappingURL=pip-webui-themes.js.map
