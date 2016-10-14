@@ -21,6 +21,8 @@
             return;
 
             function saveSettings(theme) {
+                console.log(theme);
+                $rootScope.$theme = theme;
                 pipTheme.setCurrentTheme(theme);
             };
         })
