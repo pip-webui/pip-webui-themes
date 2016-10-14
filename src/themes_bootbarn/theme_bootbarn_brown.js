@@ -12,7 +12,7 @@
 
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
-            'bootbarn-brown': 'Brown'
+            'bootbarn-brown': 'Коричневая'
         });
 
         registerBrownTheme('bootbarn-brown');

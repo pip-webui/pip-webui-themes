@@ -29,7 +29,8 @@
                 $rootScope.$theme = theme;
             },
 
-            /** Add attribute 'md-theme' with value current theme
+            /** 
+             *  Add attribute 'md-theme' with value current theme
              *  Add current theme class
              */
             initializeTheme: function (theme) {

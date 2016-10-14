@@ -40,7 +40,8 @@
                 $rootScope.$theme = theme;
             },
 
-            /** Add attribute 'md-theme' with value current theme
+            /** 
+             *  Add attribute 'md-theme' with value current theme
              *  Add current theme class
              */
             initializeTheme: function (theme) {
@@ -102,7 +103,7 @@
 
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
-            'bootbarn-brown': 'Brown'
+            'bootbarn-brown': 'Коричневая'
         });
 
         registerBrownTheme('bootbarn-brown');
