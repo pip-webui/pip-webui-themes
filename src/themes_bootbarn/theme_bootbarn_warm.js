@@ -38,6 +38,12 @@
         });
         $mdThemingProvider.definePalette('bootbarn-warm-accent', warmAccentPalette);
 
+        var warmErrorPalette = $mdThemingProvider.extendPalette('red', {
+            'A200': 'rgba(255, 87, 34, 1)',
+            'contrastLightColors': ['A200']
+        });
+        $mdThemingProvider.definePalette('bootbarn-warm-error', warmErrorPalette);
+
         $mdThemingProvider.theme('bootbarn-warm')
             .primaryPalette('bootbarn-warm-primary', {
                 'default': '500',
@@ -48,7 +54,7 @@
                 'hue-1': 'A200',  // tiles dialog
                 'hue-2': 'A700'   // app bar
             })
-            .warnPalette('red', {
+            .warnPalette('bootbarn-warm-error', {
                 'default': 'A200'
             })
             .accentPalette('bootbarn-warm-accent', {

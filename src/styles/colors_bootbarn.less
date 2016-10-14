@@ -16,6 +16,11 @@
 @color-bootbarn-cool-hue:                       rgba(69, 90, 100, .54);
 @color-bootbarn-cool-accent-hue:                rgba(76, 175, 80, .54);
 
+@color-bootbarn-monochrome-primary:             rgba(38, 50, 56, 1);
+@color-bootbarn-monochrome-accent:              rgba(76, 175, 80, 1);
+@color-bootbarn-monochrome-hue:                 rgba(38, 50, 56, .54);
+@color-bootbarn-monochrome-accent-hue:          rgba(76, 175, 80, .54);
+
 @color-bootbarn-warm-theme:
         @color-bootbarn-warm-primary // 1
         @color-bootbarn-warm-accent  // 2
@@ -44,6 +49,20 @@
         @color-window
         @color-bootbarn-cool-accent-hue;
 
+@color-bootbarn-monochrome-theme:
+        @color-bootbarn-monochrome-primary // 1
+        @color-bootbarn-monochrome-accent  // 2
+        @color-bootbarn-monochrome-hue     // 3
+        @color-primary      // 4
+        @color-secondary    // 5
+        @color-badge        // 6
+        @color-divider      // 7
+        @color-toast        // 8
+        @color-badge       // 9
+        @color-content
+        @color-window
+        @color-bootbarn-monochrome-accent-hue;
+
 .generate-theme(bootbarn-warm, @color-bootbarn-warm-theme);
 .generate-theme(bootbarn-cool, @color-bootbarn-cool-theme);
-
+.generate-theme(bootbarn-monochrome, @color-bootbarn-cool-theme);
