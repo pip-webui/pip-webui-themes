@@ -2,6 +2,18 @@
 
 ## <a name="contents"></a> Contents
 - [Installing](#install)
+- [Default Themes](#def_themes)
+- [Blue Theme](#blue_theme)
+- [Pink Theme](#pink_theme)
+- [Amber Theme](#amber_theme)
+- [Orange Theme](#orange_theme)
+- [Green Theme](#green_theme)
+- [Navy Theme](#navy_theme)
+- [Grey Theme](#grey_theme)
+- [Bootbarn Themes](#bootbarn_themes)
+- [Warm Theme](#warm_theme)
+- [Cool Theme](#cool_theme)
+- [Monochrome Theme](#monochrome_theme)
 - [Themes Service](#theme)
 - [Questions and bugs](#issues)
 
@@ -167,7 +179,44 @@ angular.module('myApp',[..., 'pipTheme.Bootbarn', 'pipTheme']);
 
 <img src="images/img_bootbarn.png"/>
 
+## <a name="warm_theme"></a> Bootbarn Warm Theme
 
+**pipTheme.Bootbarn.Warm** configuration includes bootbarn-warm theme.
+
+### Usage
+
+Register **pipTheme.Bootbarn.Warm** module in angular module dependencies before registration **pipTheme** module.
+```javascript
+angular.module('myApp',[..., 'pipTheme.Bootbarn.Warm', 'pipTheme']);
+```
+
+<img src="images/img_bootbarn_warm.png"/>
+
+## <a name="cool_theme"></a> Bootbarn Cool Theme
+
+**pipTheme.Bootbarn.Cool** configuration includes bootbarn-cool theme.
+
+### Usage
+
+Register **pipTheme.Bootbarn.Cool** module in angular module dependencies before registration **pipTheme** module.
+```javascript
+angular.module('myApp',[..., 'pipTheme.Bootbarn.Cool', 'pipTheme']);
+```
+
+<img src="images/img_bootbarn_cool.png"/>
+
+## <a name="monochrome_theme"></a> Bootbarn Monochrome Theme
+
+**pipTheme.Bootbarn.Monochrome** configuration includes bootbarn-monochrome theme.
+
+### Usage
+
+Register **pipTheme.Bootbarn.Monochrome** module in angular module dependencies before registration **pipTheme** module.
+```javascript
+angular.module('myApp',[..., 'pipTheme.Bootbarn.Monochrome', 'pipTheme']);
+```
+
+<img src="images/img_bootbarn_monochrome.png"/>
 
 ## <a name="themes"></a> Themes Service
 
