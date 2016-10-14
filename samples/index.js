@@ -5,7 +5,7 @@
 
     var content = [
         { title: 'Default', state: 'default', url: '/default', controller: 'ThemesController', templateUrl: 'themes_default.html' },
-        { title: 'Bootbarn colors', state: 'bootbarn', url: '/bootbarn', controller: 'ThemesBootbarnController', templateUrl: 'themes_default.html'}
+        { title: 'Bootbarn', state: 'bootbarn', url: '/bootbarn', controller: 'ThemesBootbarnController', templateUrl: 'themes_default.html'}
     ];
 
 
