@@ -15,6 +15,7 @@
 - [Cool Theme](#cool_theme)
 - [Monochrome Theme](#monochrome_theme)
 - [Themes Service](#theme)
+- [Custom Theme](#custom)
 - [Questions and bugs](#issues)
 
 
@@ -246,6 +247,117 @@ angular.module('myApp',[..., 'pipTheme']);
 
 * **setCurrentTheme** - change current theme. Parameters: *theme* - name of a previously initialized theme.
 * **initializeTheme** - initialize theme in application after initialize theme with $mdTheming provider in config. Parameters: *theme* - name of a previously initialized theme.
+
+
+## <a name="custom"></a> Custom Theme
+
+### Register theme with $mdThemingProvider
+
+You can register custom theme. 
+Configuring of the default theme is done by using the $mdThemingProvider during application configuration.
+You can specify a color palette for a given color intention by calling the appropriate configuration method (theme.primaryPalette, theme.accentPalette, theme.warnPalette, theme.backgroundPalette).
+
+#### Usage
+
+```javascript
+(function () {
+    'use strict';
+    var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
+
+    thisModule.config(config);
+
+    function config($mdThemingProvider, pipTranslateProvider) {
+
+        var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+            'A100': 'rgba(250, 250, 250, 1)',
+            'A200': 'rgba(76, 175, 80, 1)'
+        });
+        $mdThemingProvider.definePalette('green-background', greenBackgroundPalette);
+
+        var greenPrimaryPalette = $mdThemingProvider.extendPalette('green', {
+            '300': '#9ed4a1',
+            'contrastLightColors': ['500', '300']
+        });
+        $mdThemingProvider.definePalette('green-primary', greenPrimaryPalette);
+
+        var greenAccentPalette = $mdThemingProvider.extendPalette('amber', {
+            'contrastLightColors': ['A700']
+        });
+        $mdThemingProvider.definePalette('green-accent', greenAccentPalette);
+
+        $mdThemingProvider.theme('green')
+            .primaryPalette('green-primary', {
+                'default': '500',
+                'hue-1': '300'
+            })
+            .backgroundPalette('green-background', {
+                'default': '50',  
+                'hue-1': 'A200',  
+                'hue-2': 'A700'   
+            })
+            .warnPalette('red', {
+                'default': 'A200'
+            })
+            .accentPalette('green-accent', {
+                'default': 'A700'
+            });
+        $mdThemingProvider.alwaysWatchTheme(true);
+    }
+})();
+
+```
+#### Methods
+
+* **$mdThemingProvider.extendPalette** - extend some default palette.
+* **$mdThemingProvider.definePalette** - add new palette in palette array
+* **$mdThemingProvider.theme** - register new theme
+* **$mdThemingProvider.alwaysWatchTheme** - add watch for theme change
+
+### Add css variables and styles 
+
+You may add variables for themes class and after call mixin **generate-theme**.
+In project needs add **pip-webui-cssframework.less** wich you find in /dist [pip-webui-cssframework](https://github.com/pip-webui/pip-webui-cssframework).
+
+#### Usage
+
+```less
+@color-bootbarn-warm-theme:
+        @color-bootbarn-warm-primary // primary color
+        @color-bootbarn-warm-accent  // accent color
+        @color-bootbarn-warm-hue    // primary color wich some opacity
+        @color-primary    // text color  
+        @color-secondary  // text color with some opacity 
+        @color-bootbarn-warm-error // error color
+        @color-divider  // color for dividers  
+        @color-toast    // background color for toasts    
+        @color-bootbarn-warm-error // background color for badge   
+        @color-content // background color for content window
+        @color-window // background color for window
+        @color-bootbarn-warm-accent-hue; // accent color wich some opacity
+
+.generate-theme(bootbarn-warm, @color-bootbarn-warm-theme);
+```
+
+In final you have next css classes:
+
+**color-primary** - primary color
+**color-primary-bg** - background color primary
+**color-accent** - color accent
+**color-accent-bg** - background color accent
+**color-accent-hue-bg** - background color accent with opacity
+**color-hue** - primary color with opacity
+**color-hue-bg** - background is primary color with opacity
+**color-primary-text** - text color 
+**color-secondary-text**  - secondary text color 
+**color-divider** - color of divider 
+**color-badge** - color for badges
+**color-badge-bg** - background color for badges
+**color-error** - color for errors
+**color-toast** - background color for toast 
+**color-content-bg** - background content
+**color-window-bg** - background window
+**color-disabled** - disabling color
+**color-disabled-bg** - background wich  disabling color
 
 ## <a name="issues"></a> Questions and bugs
 
