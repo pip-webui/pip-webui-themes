@@ -5,8 +5,8 @@
 
 <md-select ng-model="$theme" ng-change="saveChanges($theme)" class="w-stretch tp0 tm0 theme-text-primary"
            ng-disabled="transaction.busy()"
-           placeholder="'THEME'">
-    <md-option ng-value="theme" ng-repeat="theme in themes" ng-selected="$theme == theme ? true : false">{{ theme}}
+           placeholder="{{'THEME' |translate}}">
+    <md-option ng-value="theme" ng-repeat="theme in themes" ng-selected="$theme == theme ? true : false">{{theme |translate}}
     </md-option>
 </md-select>
 

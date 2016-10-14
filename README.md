@@ -6,7 +6,7 @@ Pip.WebUI.Themes module contains a mechanism to define and dynamically switch co
 
 Todo: Add sample how to configure Angular Material themes, custom themes and how to switch them in runtime
 
-And more... Please, look at [User's guide](https://github.com/pip-webui/pip-webui-core/blob/master/doc/UsersGuide.md) for details.
+And more... Please, look at [User's guide](https://github.com/pip-webui/pip-webui-themes/blob/master/doc/UsersGuide.md) for details.
 
 
 ## Learn more about the module
