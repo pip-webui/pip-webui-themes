@@ -648,10 +648,10 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .bootbarn-monochrome .color-primary {
-  color: #455a64 !important;
+  color: #263238 !important;
 }
 .bootbarn-monochrome .color-primary-bg {
-  background-color: #455a64 !important;
+  background-color: #263238 !important;
   color: #fafafa;
 }
 .bootbarn-monochrome .color-accent {
@@ -665,10 +665,10 @@
   background-color: rgba(76, 175, 80, 0.54) !important;
 }
 .bootbarn-monochrome .color-hue {
-  color: rgba(69, 90, 100, 0.54) !important;
+  color: rgba(38, 50, 56, 0.54) !important;
 }
 .bootbarn-monochrome .color-hue-bg {
-  background-color: rgba(69, 90, 100, 0.54) !important;
+  background-color: rgba(38, 50, 56, 0.54) !important;
 }
 .bootbarn-monochrome .color-primary-text {
   color: rgba(0, 0, 0, 0.87) !important;
