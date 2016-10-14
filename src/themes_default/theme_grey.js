@@ -16,7 +16,7 @@
         });
 
         var thirdPartyPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(231, 231, 231, 1)',
+            'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(255, 152, 0, 1)',
             'A400': '#a9b9c0',
             '500': '#607D8B',

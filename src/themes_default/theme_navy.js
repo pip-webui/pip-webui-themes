@@ -17,7 +17,7 @@
         var greyPalette = $mdThemingProvider.extendPalette('grey', {
             '700': 'rgba(86, 97, 125, 1)',
             '800': 'rgba(86, 97, 125, .54)',
-            'A100': 'rgba(231, 231, 231, 1)'
+            'A100': 'rgba(250, 250, 250, 1)',
         });
         $mdThemingProvider.definePalette('grey', greyPalette);
 

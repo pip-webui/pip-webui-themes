@@ -18,9 +18,10 @@
         $mdThemingProvider.alwaysWatchTheme(true);
 
         var warmBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(231, 231, 231, 1)',
-            'A200': 'rgba(76, 175, 80, 1)'
-        });
+                'A100': 'rgba(250, 250, 250, 1)',
+                'A200': 'rgba(177, 55, 34, 1)'
+            })
+            ;
         $mdThemingProvider.definePalette('bootbarn-warm-background', warmBackgroundPalette);
 
         var warmPrimaryPalette = $mdThemingProvider.extendPalette('brown', {

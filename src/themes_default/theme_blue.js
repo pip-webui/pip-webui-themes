@@ -28,7 +28,7 @@
             $mdThemingProvider.definePalette('blue-primary', bluePrimaryPalette);
 
             var blueBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-                'A100': 'rgba(231, 231, 231, 1)',
+                'A100': 'rgba(250, 250, 250, 1)',
                 'A200': 'rgba(33, 150, 243, 1)'
             });
             $mdThemingProvider.definePalette('blue-background', blueBackgroundPalette);

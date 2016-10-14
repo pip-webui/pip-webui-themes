@@ -3,20 +3,20 @@
     var thisModule = angular.module('pipTheme.Orange', ['ngMaterial']);
 
     thisModule.config(config);
-    
+
     function config($mdThemingProvider, pipTranslateProvider) {
         pipTranslateProvider.translations('en', {
             THEME: 'Theme',
             orange: 'Orange'
         });
-        
+
         pipTranslateProvider.translations('ru', {
             THEME: 'Тема',
             orange: 'Оранжевая'
         });
 
         var RedBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(231, 231, 231, 1)',
+            'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(255, 112, 67, 1)',
             'contrastLightColors': ['600', '700', '800', '900', 'A200']
         });

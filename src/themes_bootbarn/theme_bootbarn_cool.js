@@ -16,8 +16,8 @@
         });
         
         var coolBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(231, 231, 231, 1)',
-            'A200': 'rgba(76, 175, 80, 1)'
+            'A100': 'rgba(250, 250, 250, 1)',
+            'A200': 'rgba(69, 90, 100, 1)'
         });
         $mdThemingProvider.definePalette('bootbarn-cool-background', coolBackgroundPalette);
 
@@ -29,7 +29,7 @@
         $mdThemingProvider.definePalette('bootbarn-cool-primary', coolPrimaryPalette);
 
 
-        var coolAccentPalette = $mdThemingProvider.extendPalette('amber', {
+        var coolAccentPalette = $mdThemingProvider.extendPalette('green', {
             'A700': 'rgba(76, 175, 80, 1)',
             'contrastLightColors': ['A700']
         });

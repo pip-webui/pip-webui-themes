@@ -15,7 +15,7 @@
         });
 
         var orangeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(231, 231, 231, 1)',
+            'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(255, 152, 0, 1)'
         });
         $mdThemingProvider.definePalette('orange-background', orangeBackgroundPalette);
