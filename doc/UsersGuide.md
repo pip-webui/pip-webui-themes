@@ -340,24 +340,24 @@ In project needs add **pip-webui-cssframework.less** wich you find in /dist [pip
 
 In final you have next css classes:
 
-**color-primary** - primary color
-**color-primary-bg** - background color primary
-**color-accent** - color accent
-**color-accent-bg** - background color accent
-**color-accent-hue-bg** - background color accent with opacity
-**color-hue** - primary color with opacity
-**color-hue-bg** - background is primary color with opacity
-**color-primary-text** - text color 
-**color-secondary-text**  - secondary text color 
-**color-divider** - color of divider 
-**color-badge** - color for badges
-**color-badge-bg** - background color for badges
-**color-error** - color for errors
-**color-toast** - background color for toast 
-**color-content-bg** - background content
-**color-window-bg** - background window
-**color-disabled** - disabling color
-**color-disabled-bg** - background wich  disabling color
+* **color-primary** - primary color
+* **color-primary-bg** - background color primary
+* **color-accent** - color accent
+* **color-accent-bg** - background color accent
+* **color-accent-hue-bg** - background color accent with opacity
+* **color-hue** - primary color with opacity
+* **color-hue-bg** - background is primary color with opacity
+* **color-primary-text** - text color 
+* **color-secondary-text**  - secondary text color 
+* **color-divider** - color of divider 
+* **color-badge** - color for badges
+* **color-badge-bg** - background color for badges
+* **color-error** - color for errors
+* **color-toast** - background color for toast 
+* **color-content-bg** - background content
+* **color-window-bg** - background window
+* **color-disabled** - disabling color
+* **color-disabled-bg** - background wich  disabling color
 
 ## <a name="issues"></a> Questions and bugs
 
