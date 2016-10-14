@@ -14,7 +14,7 @@
 - [Warm Theme](#warm_theme)
 - [Cool Theme](#cool_theme)
 - [Monochrome Theme](#monochrome_theme)
-- [Themes Service](#theme)
+- [Themes Service](#themes)
 - [Custom Theme](#custom)
 - [Questions and bugs](#issues)
 
