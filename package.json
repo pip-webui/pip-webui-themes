@@ -1,34 +1,34 @@
 {
-  "name": "pip-webui-themes",
-  "version": "1.0.5",
-  "author": "Digital Living Software Corp. <www.digitallivingsoftware.com>",
-  "description": "Non-visual core services for Pip.WebUI",
-  "contributors": [
-    {
-      "name": "Sergey Seroukhov",
-      "email": "seroukhov@gmail.com"
-    },
-    {
-      "name": "Kate Negrienko",
-      "email": "katya@negrienko.com"
-    },
-    {
-      "name": "Mark Zontak",
-      "email": "mark@zontak.me"
+    "name": "pip-webui-themes",
+    "version": "1.5.0",
+    "author": "Digital Living Software Corp. <www.digitallivingsoftware.com>",
+    "description": "Non-visual core services for Pip.WebUI",
+    "contributors": [
+        {
+            "name": "Sergey Seroukhov",
+            "email": "seroukhov@gmail.com"
+        },
+        {
+            "name": "Kate Negrienko",
+            "email": "katya@negrienko.com"
+        },
+        {
+            "name": "Mark Zontak",
+            "email": "mark@zontak.me"
+        }
+    ],
+    "keywords": [
+        "pip",
+        "webui",
+        "services",
+        "filters"
+    ],
+    "noAnalyze": true,
+    "license": "MIT",
+    "private": false,
+    "dependencies": {},
+    "devDependencies": {
+        "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git",
+        "typescript": "^2.0.3"
     }
-  ],
-  "keywords": [
-    "pip",
-    "webui",
-    "services",
-    "filters"
-  ],
-  "noAnalyze": true,
-  "license": "MIT",
-  "private": false,
-  "dependencies": {},
-  "devDependencies": {
-    "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git",
-    "typescript": "^2.0.3"
-  }
 }
