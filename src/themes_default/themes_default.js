@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var thisModule = angular.module('pipTheme.Default', ['ngMaterial', 'pipTheme.Blue', 'pipTheme.Pink',
+    var thisModule = angular.module('pipTheme.Default', ['pipTheme.Blue', 'pipTheme.Pink',
         'pipTheme.Amber', 'pipTheme.Orange', 'pipTheme.Green', 'pipTheme.Navy', 'pipTheme.Grey']);
 
     thisModule.config(config);
