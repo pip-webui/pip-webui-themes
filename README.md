@@ -20,41 +20,97 @@ Register **pipTheme.Default** module in angular module dependencies before regis
 
 <img src="doc/images/img_default.png"/>
 
-**Blue Theme** configuration includes blue theme.
-<img src="doc/images/img_blue.png"/>
+Register **pipTheme** module in angular module dependencies.
+```javascript
+angular.module('myApp',[..., 'pipTheme.Default', 'pipTheme']);
+```
 
-**Pink Theme** configuration includes pink theme.
-<img src="doc/images/img_pink.png"/>
+For change theme use **pipTheme.setCurrentTheme(theme);** function
 
-**Amber Theme** configuration includes Amber theme.
-<img src="doc/images/img_amber.png"/>
+You can register **Custom Theme**. 
+Configuring of the default theme is done by using the $mdThemingProvider during application configuration.
+You can specify a color palette for a given color intention by calling the appropriate configuration method (theme.primaryPalette, theme.accentPalette, theme.warnPalette, theme.backgroundPalette).
 
-**Orange theme** configuration includes orange theme.
-<img src="doc/images/img_orange.png"/>
+```javascript
+(function () {
+    'use strict';
+    var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
 
-**Green theme** configuration includes green theme.
-<img src="doc/images/img_green.png"/>
+    thisModule.config(config);
 
-**Navy Theme** configuration includes navy theme.
-<img src="doc/images/img_navy.png"/>
+    function config($mdThemingProvider, pipTranslateProvider) {
 
-**Grey Theme** configuration includes grey theme.
-<img src="doc/images/img_grey.png"/>
+        var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+            'A100': 'rgba(250, 250, 250, 1)',
+            'A200': 'rgba(76, 175, 80, 1)'
+        });
+        $mdThemingProvider.definePalette('green-background', greenBackgroundPalette);
 
-**Bootbarn Themes** configuration includes bootbarn-warm, bootbarn-monochrome and bootbarn-cool themes.
-<img src="doc/images/img_bootbarn.png"/>
+        var greenPrimaryPalette = $mdThemingProvider.extendPalette('green', {
+            '300': '#9ed4a1',
+            'contrastLightColors': ['500', '300']
+        });
+        $mdThemingProvider.definePalette('green-primary', greenPrimaryPalette);
 
-**Bootbarn Warm Theme** configuration includes bootbarn-warm theme.
-<img src="doc/images/img_bootbarn_warm.png"/>
+        var greenAccentPalette = $mdThemingProvider.extendPalette('amber', {
+            'contrastLightColors': ['A700']
+        });
+        $mdThemingProvider.definePalette('green-accent', greenAccentPalette);
 
-**Bootbarn Cool Theme** configuration includes bootbarn-cool theme.
-<img src="doc/images/img_bootbarn_cool.png"/>
+        $mdThemingProvider.theme('green')
+            .primaryPalette('green-primary', {
+                'default': '500',
+                'hue-1': '300'
+            })
+            .backgroundPalette('green-background', {
+                'default': '50',  
+                'hue-1': 'A200',  
+                'hue-2': 'A700'   
+            })
+            .warnPalette('red', {
+                'default': 'A200'
+            })
+            .accentPalette('green-accent', {
+                'default': 'A700'
+            });
+        $mdThemingProvider.alwaysWatchTheme(true);
+    }
+})();
+```
 
-**Bootbarn Monochrome Theme** configuration includes bootbarn-monochrome theme.
-<img src="doc/images/img_bootbarn_monochrome.png"/>
+You may add variables for themes class and after call mixin **generate-theme**.
+In project needs add **pip-webui-cssframework.less** wich you find in /dist [pip-webui-cssframework](https://github.com/pip-webui/pip-webui-cssframework).
+
+```less
+@color-green-theme:
+        @color-green-primary // primary color
+        @color-green-accent  // accent color
+        @color-green-hue    // primary color wich some opacity
+        @color-primary    // text color  
+        @color-secondary  // text color with some opacity 
+        @color-green-error // error color
+        @color-divider  // color for dividers  
+        @color-toast    // background color for toasts    
+        @color-green-error // background color for badge   
+        @color-content // background color for content window
+        @color-window // background color for window
+        @color-green-accent-hue; // accent color wich some opacity
+
+.generate-theme(green, @color-green-theme);
+```
+
+You can use theme in html
+```html
+    // Use theme class in html
+    <div class="color-primary"> color-primary</div>
+    <div class="color-primary-bg"> color-primary-bg</div>
+    <div class="color-accent"> color-accent</div>
+    <div class="color-accent-bg"> color-accent-bg</div>
+    ...
+    <md-button class="md-primary md-hue-1">Primary Hue 1</md-button>
+```
 
 And more... Please, look at [User's guide](https://github.com/pip-webui/pip-webui-themes/blob/master/doc/UsersGuide.md) for details.
-
 
 ## Learn more about the module
 
