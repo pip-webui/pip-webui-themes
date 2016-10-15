@@ -79,7 +79,7 @@ You can specify a color palette for a given color intention by calling the appro
 ```
 
 You may add variables for themes class and after call mixin **generate-theme**.
-In project needs add **pip-webui-cssframework.less** wich you find in /dist [pip-webui-cssframework](https://github.com/pip-webui/pip-webui-cssframework).
+In project needs add **pip-webui-css.less** wich you find in /dist [pip-webui-css](https://github.com/pip-webui/pip-webui-css).
 
 ```less
 @color-green-theme:
