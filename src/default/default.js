@@ -5,13 +5,13 @@
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема'
+        // });
 
         $mdThemingProvider.setDefaultTheme('default');
         $mdThemingProvider.alwaysWatchTheme(true);

@@ -4,16 +4,16 @@
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            'bootbarn-monochrome': 'Monochrome'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-monochrome': 'Monochrome'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            'bootbarn-monochrome': ''
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-monochrome': ''
+        // });
         
         var monochromeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',

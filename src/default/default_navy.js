@@ -4,15 +4,15 @@
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            navy: 'Navy'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            navy: 'Сине-серая'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     navy: 'Navy'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     navy: 'Сине-серая'
+        // });
 
         var greyPalette = $mdThemingProvider.extendPalette('grey', {
             '700': 'rgba(86, 97, 125, 1)',

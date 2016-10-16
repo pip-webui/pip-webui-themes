@@ -1,84 +1,96 @@
-
-
 (function () {
     'use strict';
-    angular.module('pipTheme', [
-        'pipTheme.Run', 
-        'pipTheme.Factory'
-    ]);
-})();
-
-(function () {
-    'use strict';
-    ThemeFactory.$inject = ['localStorageService', '$mdTheming', '$rootScope', '$timeout', '$state', '$stateParams'];
-    var thisModule = angular.module('pipTheme.Factory', ['ngMaterial']);
+    var thisModule = angular.module('pipTheme', ['LocalStorageModule', 'ngMaterial']);
     
-    thisModule.factory('pipTheme', ThemeFactory);
-    
-    function ThemeFactory(localStorageService, $mdTheming, $rootScope, $timeout, $state, $stateParams) {
-        return {
-            /**
-             * Set current theme
-             * @param {String} theme - theme name
-             * @param {String}
-             * @throws {Error} 'Theme is not specified' in case if theme is not defined
-             * @throws {Error} 'Theme XXX is not registered. Please, register it first with $mdThemingProvider' if theme is not registered
-             */
-            setCurrentTheme: function (theme) {
-                if (theme == null || theme === '') {
-                    throw new Error('Theme is not specified');
-                }
+    thisModule.provider('pipTheme', function() {
+        var 
+            theme = 'blue',
+            persist = true,
+            setRoot = true;
 
-                if (localStorageService.get('theme') == theme && $rootScope.$theme == theme) {
-                    return;
-                }
+        this.use = initTheme;
+        this.init = initTheme;
+        this.persist = initPersist;
+        this.setRoot = initSetRoot;
 
-                if (!(theme in $mdTheming.THEMES)) {
-                    throw new Error('Theme ' + theme + ' is not registered. Please, register it first with $mdThemingProvider');
-                }
-                localStorageService.set('theme', theme);
+        this.$get = ['$rootScope', '$timeout', 'localStorageService', '$mdTheming', function ($rootScope, $timeout, localStorageService, $mdTheming) {
+            // Read language from persistent storage
+            if (persist)
+                theme = localStorageService.get('theme') || theme;
+
+            // Set root variable
+            if (setRoot) 
                 $rootScope.$theme = theme;
-            },
 
-            /** 
-             *  Add attribute 'md-theme' with value current theme
-             *  Add current theme class
-             */
-            initializeTheme: function (theme) {
-                if (theme == null || theme === '') {
-                    throw new Error('Theme is not specified');
-                }
+            // Switch material theme
+            $('body').attr('md-theme', '{{ $theme }}').addClass('{{ $theme }}');
+            
+            // Resetting root scope to force update language on the screen
+            function resetContent(fullReset, partialReset) {
+                fullReset = fullReset !== undefined ? !!fullReset : true;
+                partialReset = partialReset !== undefined ? !!partialReset : true;
 
-                if (!(theme in $mdTheming.THEMES)) {
-                    throw new Error('Theme ' + theme + ' is not registered. Please, register it first with $mdThemingProvider');
-                }
-
-                $rootScope.$theme = theme;
-                $('body').attr('md-theme', '{{ $theme }}').addClass('{{ $theme }}');
+                $rootScope.$reset = fullReset;
+                $rootScope.$partialReset = partialReset;
+                $timeout(function() {
+                    $rootScope.$reset = false;
+                    $rootScope.$partialReset = false;
+                }, 0);
             }
-        };
-    }
-})();
 
+            function getOrSetTheme(newTheme, fullReset, partialReset) {
+                if (newTheme != null && newTheme != theme) {
+                    if (!(theme in $mdTheming.THEMES))
+                        throw new Error('Theme ' + theme + ' is not registered. Please, register it first with $mdThemingProvider');
 
+                    theme = newTheme;
+                    
+                    if (persist)
+                        localStorageService.set('theme', theme);
+                    if (setRoot)
+                        $rootScope.$language = theme;
+                    
+                    // Switch material theme
+                    $('body').attr('md-theme', '{{ $theme }}').addClass('{{ $theme }}');
 
-(function () {
-    'use strict';
-    run.$inject = ['localStorageService', 'pipTheme', '$rootScope'];
-    var thisModule = angular.module('pipTheme.Run', []);
+                    // Resetting content.
+                    resetContent(fullReset, partialReset);
 
-    thisModule.run(run);
-    
-    function run(localStorageService, pipTheme, $rootScope) {
-        try {
-            var currentTheme = ($rootScope.$user && $rootScope.$user.theme) ?
-                $rootScope.$user.theme : localStorageService.get('theme');
+                    // Sending notification
+                    $rootScope.$broadcast('pipThemeChanged', newTheme);
+                }
+                return theme;
+            }
 
-            pipTheme.initializeTheme(currentTheme);
-        } catch (ex) {
-            pipTheme.initializeTheme('blue');
+            return {
+                use: getOrSetTheme,
+                theme: getOrSetTheme
+            }
+        }];
+
+        // Initialize theme selection
+        function initTheme(newTheme) {
+            if (newTheme != null)
+                theme = newTheme;
+            return theme;
         }
-    }
+
+        // Initialize persistence flag
+        function initPersist(newPersist) {
+            if (newPersist != null)
+                persist = newPersist;
+            return persist;
+        }
+
+        // Initialize set root flag
+        function initSetRoot(newSetRoot) {
+            if (newSetRoot != null)
+                setRoot = newSetRoot;
+            return setRoot;  
+        }
+
+    });
+    
 })();
 
 (function () {
@@ -92,21 +104,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Bootbarn.Cool', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            'bootbarn-cool': 'Cool'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-cool': 'Cool'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            'bootbarn-cool': ''
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-cool': ''
+        // });
         
         var coolBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -152,21 +164,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Bootbarn.Monochrome', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            'bootbarn-monochrome': 'Monochrome'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-monochrome': 'Monochrome'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            'bootbarn-monochrome': ''
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-monochrome': ''
+        // });
         
         var monochromeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -212,21 +224,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Bootbarn.Warm', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            'bootbarn-warm': 'Warm'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-warm': 'Warm'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            'bootbarn-warm': 'Коричневая'
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-warm': 'Коричневая'
+        // });
 
         $mdThemingProvider.alwaysWatchTheme(true);
 
@@ -278,19 +290,19 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Default', ['pipTheme.Blue', 'pipTheme.Pink',
         'pipTheme.Amber', 'pipTheme.Orange', 'pipTheme.Green', 'pipTheme.Navy', 'pipTheme.Grey']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема'
+        // });
 
         $mdThemingProvider.setDefaultTheme('default');
         $mdThemingProvider.alwaysWatchTheme(true);
@@ -300,20 +312,20 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Amber', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            amber: 'Amber'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            amber: 'Янтарная'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     amber: 'Amber'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     amber: 'Янтарная'
+        // });
 
         var orangeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -350,18 +362,18 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Black', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема'
+        // });
         
         registerDarkTheme('dark');
         registerBlackTheme('black');
@@ -434,20 +446,20 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Blue', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            blue: 'Blue',
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            blue: 'Голубая'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     blue: 'Blue',
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     blue: 'Голубая'
+        // });
 
         registerBlueTheme('default');
         registerBlueTheme('blue');
@@ -495,21 +507,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            green: 'Green'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     green: 'Green'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            green: 'Зеленая'
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     green: 'Зеленая'
+        // });
 
         var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -551,21 +563,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Grey', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            grey: 'Grey'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     grey: 'Grey'
+        // });
         
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            grey: 'Серая'
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     grey: 'Серая'
+        // });
 
         var thirdPartyPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -604,20 +616,20 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Navy', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            navy: 'Navy'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            navy: 'Сине-серая'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     navy: 'Navy'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     navy: 'Сине-серая'
+        // });
 
         var greyPalette = $mdThemingProvider.extendPalette('grey', {
             '700': 'rgba(86, 97, 125, 1)',
@@ -653,21 +665,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Orange', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            orange: 'Orange'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     orange: 'Orange'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            orange: 'Оранжевая'
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     orange: 'Оранжевая'
+        // });
 
         var RedBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -706,21 +718,21 @@
 
 (function () {
     'use strict';
-    config.$inject = ['$mdThemingProvider', 'pipTranslateProvider'];
+    config.$inject = ['$mdThemingProvider'];
     var thisModule = angular.module('pipTheme.Pink', ['ngMaterial']);
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            pink: 'Pink'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            pink: 'Розовая',
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     pink: 'Pink'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     pink: 'Розовая',
 
-        });
+        // });
 
         var PinkBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',

@@ -11,24 +11,19 @@
         {
             "name": "Kate Negrienko",
             "email": "katya@negrienko.com"
-        },
-        {
-            "name": "Mark Zontak",
-            "email": "mark@zontak.me"
         }
     ],
     "keywords": [
         "pip",
         "webui",
-        "services",
-        "filters"
+        "color",
+        "themes"
     ],
     "noAnalyze": true,
     "license": "MIT",
     "private": false,
     "dependencies": {},
     "devDependencies": {
-        "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git",
-        "typescript": "^2.0.3"
+        "pip-webui-tasks": "git+https://github.com/pip-webui/pip-webui-tasks.git"
     }
 }

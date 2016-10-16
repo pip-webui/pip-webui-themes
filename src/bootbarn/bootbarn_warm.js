@@ -4,16 +4,16 @@
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            'bootbarn-warm': 'Warm'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-warm': 'Warm'
+        // });
 
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            'bootbarn-warm': 'Коричневая'
-        });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-warm': 'Коричневая'
+        // });
 
         $mdThemingProvider.alwaysWatchTheme(true);
 

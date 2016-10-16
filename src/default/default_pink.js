@@ -4,16 +4,16 @@
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            pink: 'Pink'
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            pink: 'Розовая',
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     pink: 'Pink'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     pink: 'Розовая',
 
-        });
+        // });
 
         var PinkBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',

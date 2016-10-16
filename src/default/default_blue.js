@@ -4,15 +4,15 @@
 
     thisModule.config(config);
 
-    function config($mdThemingProvider, pipTranslateProvider) {
-        pipTranslateProvider.translations('en', {
-            THEME: 'Theme',
-            blue: 'Blue',
-        });
-        pipTranslateProvider.translations('ru', {
-            THEME: 'Тема',
-            blue: 'Голубая'
-        });
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     blue: 'Blue',
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     blue: 'Голубая'
+        // });
 
         registerBlueTheme('default');
         registerBlueTheme('blue');
