@@ -3,7 +3,7 @@
 (function () {
     'use strict';
 
-    var thisModule = angular.module('appThemesBootbarn', ['pipCore', 'pipTheme.Bootbarn', 'pipTheme']);
+    var thisModule = angular.module('appThemesBootbarn', ['pipServices', 'pipTheme.Bootbarn', 'pipTheme']);
 
     thisModule.controller('ThemesBootbarnController',
         function ($scope, $mdTheming, pipTheme, $state, $rootScope, $timeout) {
