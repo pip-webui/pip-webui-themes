@@ -1,6 +1,18 @@
 (function () {
     'use strict';
+    run.$inject = ['localStorageService', '$rootScope'];
     var thisModule = angular.module('pipTheme', ['LocalStorageModule', 'ngMaterial']);
+
+    thisModule.run(run);
+
+    function run(localStorageService, $rootScope) {
+        try {
+            $rootScope.$theme =  localStorageService.get('theme');
+            
+        } catch (ex) {
+            //pipTheme.initializeTheme('blue');
+        }
+    }
     
     thisModule.provider('pipTheme', function() {
         var 
@@ -14,7 +26,7 @@
         this.setRoot = initSetRoot;
 
         this.$get = ['$rootScope', '$timeout', 'localStorageService', '$mdTheming', function ($rootScope, $timeout, localStorageService, $mdTheming) {
-            // Read language from persistent storage
+            // Read theme from persistent storage
             if (persist)
                 theme = localStorageService.get('theme') || theme;
 
@@ -23,7 +35,7 @@
                 $rootScope.$theme = theme;
 
             // Switch material theme
-            $('body').attr('md-theme', '{{ $theme }}').addClass('{{ $theme }}');
+            //$('body').attr('md-theme',  $rootScope.$theme).addClass("{{ $theme }}");
             
             // Resetting root scope to force update language on the screen
             function resetContent(fullReset, partialReset) {
@@ -48,10 +60,10 @@
                     if (persist)
                         localStorageService.set('theme', theme);
                     if (setRoot)
-                        $rootScope.$language = theme;
+                        $rootScope.$theme = theme;
                     
                     // Switch material theme
-                    $('body').attr('md-theme', '{{ $theme }}').addClass('{{ $theme }}');
+                    //$('body').attr('md-theme', "{{ $theme }}").addClass("{{ $theme }}");
 
                     // Resetting content.
                     resetContent(fullReset, partialReset);
