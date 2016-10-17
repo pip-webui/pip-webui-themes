@@ -3,11 +3,12 @@
 (function () {
     'use strict';
 
-    var thisModule = angular.module('appThemesBootbarn', ['pipServices', 'pipTheme.Bootbarn', 'pipTheme']);
+    var thisModule = angular.module('appThemesBootbarn', ['pipTheme.Bootbarn', 'pipTheme']);
 
     thisModule.controller('ThemesBootbarnController',
-        function ($scope, $mdTheming, pipTheme, $state, $rootScope, $timeout) {
+        function ($scope, $mdTheming, pipTheme, $state, $rootScope, $timeout, localStorageService) {
 
+            $rootScope.$theme = localStorageService.get('theme');
             var allThemes = _.keys(_.omit($mdTheming.THEMES, 'default'));
             $scope.themes = [];
             _.each(allThemes, function (theme) {
@@ -23,7 +24,7 @@
             function saveSettings(theme) {
                 console.log(theme);
                 $rootScope.$theme = theme;
-                pipTheme.setCurrentTheme(theme);
+                pipTheme.use(theme, false, false);
             };
         })
 

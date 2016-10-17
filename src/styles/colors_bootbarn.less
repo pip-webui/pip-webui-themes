@@ -1,0 +1,73 @@
+// @file Color themes for BootBarn
+// @copyright Digital Living Software Corp. 2016
+
+// Themes Pallette Colors
+//------------------------------
+
+@color-bootbarn-warm-primary:                   rgba(177, 55, 34, 1);
+@color-bootbarn-warm-accent:                    rgba(127, 148, 92, 1);
+@color-bootbarn-warm-hue:                       rgba(177, 55, 34, .54);
+@color-bootbarn-warm-accent-hue:                rgba(127, 148, 92, .54);
+@color-bootbarn-warm-error:                     rgba(255, 87, 34, 1);
+@color-bootbarn-warm-warm:                      rgba(255, 152, 2, 1);
+
+@color-bootbarn-cool-primary:                   rgba(69, 90, 100, 1);
+@color-bootbarn-cool-accent:                    rgba(76, 175, 80, 1);
+@color-bootbarn-cool-hue:                       rgba(69, 90, 100, .54);
+@color-bootbarn-cool-accent-hue:                rgba(76, 175, 80, .54);
+@color-bootbarn-cool-warm:                      rgba(255, 152, 2, 1);
+
+@color-bootbarn-monochrome-primary:             rgba(38, 50, 56, 1);
+@color-bootbarn-monochrome-accent:              rgba(76, 175, 80, 1);
+@color-bootbarn-monochrome-hue:                 rgba(38, 50, 56, .54);
+@color-bootbarn-monochrome-accent-hue:          rgba(76, 175, 80, .54);
+@color-bootbarn-monochrome-warm:                rgba(255, 152, 2, 1);
+
+@color-bootbarn-warm-theme:
+        @color-bootbarn-warm-primary // primary color
+        @color-bootbarn-warm-accent  // accent color
+        @color-bootbarn-warm-hue    // primary color wich some opacity
+        @color-primary    // text color
+        @color-secondary  // text color with some opacity
+        @color-bootbarn-warm-error // error color
+        @color-divider  // color for dividers
+        @color-toast    // background color for toasts
+        @color-bootbarn-warm-error // background color for badge
+        @color-content // background color for content window
+        @color-window // background color for window
+        @color-bootbarn-warm-accent-hue
+        @color-bootbarn-warm-warm; // accent color wich some opacity
+
+@color-bootbarn-cool-theme:
+        @color-bootbarn-cool-primary // 1
+        @color-bootbarn-cool-accent  // 2
+        @color-bootbarn-cool-hue     // 3
+        @color-primary      // 4
+        @color-secondary    // 5
+        @color-badge        // 6
+        @color-divider      // 7
+        @color-toast        // 8
+        @color-badge       // 9
+        @color-content
+        @color-window
+        @color-bootbarn-cool-accent-hue
+        @color-bootbarn-cool-warm;
+
+@color-bootbarn-monochrome-theme:
+        @color-bootbarn-monochrome-primary // 1
+        @color-bootbarn-monochrome-accent  // 2
+        @color-bootbarn-monochrome-hue     // 3
+        @color-primary      // 4
+        @color-secondary    // 5
+        @color-badge        // 6
+        @color-divider      // 7
+        @color-toast        // 8
+        @color-badge       // 9
+        @color-content
+        @color-window
+        @color-bootbarn-monochrome-accent-hue
+        @color-bootbarn-monochrome-warm;
+
+.generate-theme(bootbarn-warm, @color-bootbarn-warm-theme);
+.generate-theme(bootbarn-cool, @color-bootbarn-cool-theme);
+.generate-theme(bootbarn-monochrome, @color-bootbarn-monochrome-theme);

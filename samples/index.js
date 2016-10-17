@@ -9,17 +9,23 @@
     ];
 
 
-    var thisModule = angular.module('app', ['ngMaterial', 'appThemesDefault', 'appThemesBootbarn']);
+    var thisModule = angular.module('app', [
+        'ngMaterial',
+        'ui.router', 'ui.utils',
+        
+        'appThemesDefault', 
+        'appThemesBootbarn',
+        'appTranslate'
+    ]);
 
-    thisModule.config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, $mdIconProvider) {
+    thisModule.config(function ($stateProvider, $urlRouterProvider,
+                                $mdThemingProvider, $mdIconProvider) {
 
          //$mdIconProvider.iconSet('icons', '../../dist/images/icons.svg', 512);
-        
             for (var i = 0; i < content.length; i++) {
                 var contentItem = content[i];
                 $stateProvider.state(contentItem.state, contentItem);
             }
-                
             $urlRouterProvider.otherwise('/default');
         } 
     );

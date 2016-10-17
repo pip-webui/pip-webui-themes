@@ -6,7 +6,7 @@
     <title>WebUI Framework. PipDevs Team</title>
 
     <link rel="stylesheet" href="../lib/pip-webui-lib.css"/>
-    <link rel="stylesheet" href="../lib/pip-webui-css.css"/>
+    <link rel="stylesheet" href="../dist/pip-webui-themes.css"/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
     <style>
@@ -25,15 +25,16 @@
     </style>
 
     <script src="../lib/pip-webui-lib.js"></script>
-    <script src="../lib/pip-webui-services.js"></script>
 
     <script src="../dist/pip-webui-themes.js"></script>
+    <script src="dependencies/translate.js"></script>
     <script src="themes_default.js"></script>
     <script src="themes_bootbarn.js"></script>
     <script src="index.js"></script>
 
 </head>
-<body ng-app="app" class="layout-column layout-align-start-center" ng-controller="AppController">
+<body ng-app="app" class="layout-column layout-align-start-center {{$theme}}" ng-controller="AppController"
+    md-theme="{{$theme}}">
 
 <md-toolbar ng-if="!$partialReset">
     <div class="md-toolbar-tools">
