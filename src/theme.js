@@ -7,13 +7,12 @@
     function run (localStorageService, $rootScope) {
         try {
             $rootScope.$theme =  localStorageService.get('theme');
-            
         } catch (ex) {}
     }
     
     thisModule.provider('pipTheme', function() {
         var 
-            theme = 'blue',
+            theme = 'default',
             persist = true,
             setRoot = true;
 
