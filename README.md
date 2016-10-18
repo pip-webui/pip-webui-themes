@@ -79,7 +79,6 @@ You can specify a color palette for a given color intention by calling the appro
 ```
 
 You may add variables for themes class and after call mixin **generate-theme**.
-In project needs add **pip-webui-css.less** wich you find in /dist [pip-webui-css](https://github.com/pip-webui/pip-webui-css).
 
 ```less
 @color-green-primary:                  rgba(76, 175, 80, 1);
@@ -123,6 +122,27 @@ You can use theme in html
     <div class="color-accent-bg"> color-accent-bg</div>
     ...
     <md-button class="md-primary md-hue-1">Primary Hue 1</md-button>
+```
+
+Register **pipTheme** module in angular module dependencies and use **pipTheme.use** function for change current theme.
+
+```javascript
+angular.module('myApp',[..., 'pipTheme']);
+
+...
+
+ thisModule.controller('MyController',
+    function ($scope, pipTheme) {
+        $scope.fullReset = false;
+        $scope.partialReset = false;
+        $scope.setCurrentTheme = setCurrentTheme;
+
+        return;
+
+        function setCurrentTheme(theme) {
+            pipTheme.use(theme, $scope.fullReset, $scope.partialReset);
+        };
+    })
 ```
 
 And more... Please, look at [User's guide](https://github.com/pip-webui/pip-webui-themes/blob/master/doc/UsersGuide.md) for details.
