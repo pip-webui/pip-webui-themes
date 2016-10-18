@@ -172,6 +172,21 @@ You may add variables for themes class and after call mixin **generate-theme**.
 #### Usage
 
 ```less
+@color-green-primary:                  rgba(76, 175, 80, 1);
+@color-green-accent:                   rgba(255, 171, 0, 1);
+@color-green-hue:                      rgba(76, 175, 80, .54);
+@color-green-accent-hue:               rgba(255, 171, 0, .54);
+@color-green-warm:                     rgba(255, 171, 0, .38);
+
+@color-primary:                        rgba(0, 0, 0, 0.87);
+@color-secondary:                      rgba(0, 0, 0, 0.54);
+@color-error:                          rgb(244, 67, 54);
+@color-badge:                          rgba(255, 82, 82, 1);
+@color-toast:                          rgba(46, 46, 46, 1);
+@color-divider:                        rgba(0, 0, 0, 0.12);
+@color-window:                         rgb(238, 238, 238);
+@color-content:                        rgb(250, 250, 250);
+
 @color-green-theme:
         @color-green-primary // primary color
         @color-green-accent  // accent color
@@ -185,7 +200,7 @@ You may add variables for themes class and after call mixin **generate-theme**.
         @color-content // background color for content window
         @color-window // background color for window
         @color-green-accent-hue // accent color wich some opacity
-        @color-green-warm; 
+        @color-green-warm;  // warm color
 
 .generate-theme(green, @color-green-theme);
 ```
