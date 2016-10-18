@@ -133,14 +133,12 @@ angular.module('myApp',[..., 'pipTheme']);
 
  thisModule.controller('MyController',
     function ($scope, pipTheme) {
-        $scope.fullReset = false;
-        $scope.partialReset = false;
         $scope.setCurrentTheme = setCurrentTheme;
 
         return;
 
         function setCurrentTheme(theme) {
-            pipTheme.use(theme, $scope.fullReset, $scope.partialReset);
+            pipTheme.use(theme);
         };
     })
 ```
