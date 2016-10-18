@@ -58,8 +58,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .blue .color-warm-bg {
-  background-color: rgba(0, 200, 83, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.blue .color-warm {
+  color: #ff5252 !important;
 }
 .blue md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -145,8 +148,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .pink .color-warm-bg {
-  background-color: rgba(255, 128, 171, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.pink .color-warm {
+  color: #ff5252 !important;
 }
 .pink md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -232,8 +238,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .orange .color-warm-bg {
-  background-color: rgba(255, 171, 64, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.orange .color-warm {
+  color: #ff5252 !important;
 }
 .orange md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -319,8 +328,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .amber .color-warm-bg {
-  background-color: rgba(255, 109, 0, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.amber .color-warm {
+  color: #ff5252 !important;
 }
 .amber md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -406,8 +418,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .green .color-warm-bg {
-  background-color: rgba(255, 171, 0, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.green .color-warm {
+  color: #ff5252 !important;
 }
 .green md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -493,8 +508,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .navy .color-warm-bg {
-  background-color: rgba(0, 191, 165, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.navy .color-warm {
+  color: #ff5252 !important;
 }
 .navy md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -580,8 +598,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .grey .color-warm-bg {
-  background-color: rgba(144, 164, 174, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.grey .color-warm {
+  color: #ff5252 !important;
 }
 .grey md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -667,8 +688,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .dark .color-warm-bg {
-  background-color: rgba(0, 200, 83, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(255, 255, 255, 0.87);
+}
+.dark .color-warm {
+  color: #ff5252 !important;
 }
 .dark md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -754,8 +778,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .black .color-warm-bg {
-  background-color: rgba(84, 110, 122, 0.54) !important;
+  background-color: #ff5252 !important;
   color: rgba(255, 255, 255, 0.87);
+}
+.black .color-warm {
+  color: #ff5252 !important;
 }
 .black md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -841,8 +868,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .bootbarn-warm .color-warm-bg {
-  background-color: rgba(127, 148, 92, 0.54) !important;
+  background-color: #ff9802 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.bootbarn-warm .color-warm {
+  color: #ff9802 !important;
 }
 .bootbarn-warm md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -928,8 +958,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .bootbarn-cool .color-warm-bg {
-  background-color: rgba(76, 175, 80, 0.54) !important;
+  background-color: #ff9802 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.bootbarn-cool .color-warm {
+  color: #ff9802 !important;
 }
 .bootbarn-cool md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;
@@ -1015,8 +1048,11 @@
   background-color: rgba(0, 0, 0, 0.38);
 }
 .bootbarn-monochrome .color-warm-bg {
-  background-color: rgba(76, 175, 80, 0.54) !important;
+  background-color: #ff9802 !important;
   color: rgba(0, 0, 0, 0.87);
+}
+.bootbarn-monochrome .color-warm {
+  color: #ff9802 !important;
 }
 .bootbarn-monochrome md-list-item.pip-selectable.selected .md-no-style {
   background-color: rgba(158, 158, 158, 0.2) !important;

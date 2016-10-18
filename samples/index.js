@@ -31,8 +31,17 @@
     );
 
     thisModule.controller('AppController', 
-        function ($scope, $rootScope, $state, $mdSidenav) {
-            
+        function ($scope, $rootScope, $state, $mdSidenav, $injector) {
+
+            var pipTranslate = $injector.has('pipTranslate') ? $injector.get('pipTranslate') : null;
+            if (pipTranslate) {
+                pipTranslate.translations('en', {
+                    'THEME': 'Theme'
+                });
+                pipTranslate.translations('ru', {
+                    'THEME': 'Тема'
+                });
+            }
             $scope.content = content;
             $scope.onThemeClick = function(theme) {
                 $rootScope.$theme = theme;
