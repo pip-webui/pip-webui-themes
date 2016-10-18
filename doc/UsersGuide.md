@@ -65,7 +65,7 @@ Register **pipTheme.Default** module in angular module dependencies before regis
 angular.module('myApp',[..., 'pipTheme.Default', 'pipTheme']);
 ```
 
-<img src="images/img_default.png"/>
+<img src="images/img_default.jpg"/>
 
 ## <a name="themes"></a> Themes Service
 

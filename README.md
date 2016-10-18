@@ -18,7 +18,7 @@ In **Pip.WebUI.Themes** module has Default and Bootbarn configuration. You can a
 **Default Themes** configuration includes blue, pink, amber, orange, green, navy and grey themes.
 Register **pipTheme.Default** module in angular module dependencies before registration **pipTheme** module.
 
-<img src="doc/images/img_default.png"/>
+<img src="doc/images/img_default.jpg"/>
 
 Register **pipTheme** module in angular module dependencies.
 ```javascript
