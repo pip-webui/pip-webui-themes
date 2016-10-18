@@ -103,10 +103,10 @@ In project needs add **pip-webui-css.less** wich you find in /dist [pip-webui-cs
         @color-green-hue    // primary color wich some opacity
         @color-primary    // text color  
         @color-secondary  // text color with some opacity 
-        @color-green-error // error color
+        @color-error // error color
         @color-divider  // color for dividers  
         @color-toast    // background color for toasts    
-        @color-green-error // background color for badge   
+        @color-error // background color for badge   
         @color-content // background color for content window
         @color-window // background color for window
         @color-green-accent-hue; // accent color wich some opacity
