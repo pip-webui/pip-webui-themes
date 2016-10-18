@@ -31,8 +31,9 @@
     );
 
     thisModule.controller('AppController', 
-        function ($scope, $rootScope, $state, $mdSidenav, $injector) {
+        function ($scope, $rootScope, $state, $mdSidenav, $injector,  localStorageService) {
 
+            
             var pipTranslate = $injector.has('pipTranslate') ? $injector.get('pipTranslate') : null;
             if (pipTranslate) {
                 pipTranslate.translations('en', {

@@ -7,8 +7,9 @@
 
     thisModule.controller('ThemesBootbarnController',
         function ($scope, $mdTheming, pipTheme, $state, $rootScope, $timeout, localStorageService) {
-
-            $rootScope.$theme = localStorageService.get('theme');
+            $rootScope.$theme = $rootScope.$theme || localStorageService.get('theme') || 'blue';
+            pipTheme.use($rootScope.$theme, false, false);
+            
             var allThemes = _.keys(_.omit($mdTheming.THEMES, 'default'));
             $scope.themes = [];
             _.each(allThemes, function (theme) {
