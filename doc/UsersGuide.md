@@ -54,11 +54,6 @@ If you want add default themes add **pipTheme.Default** module in angular module
 angular.module('myApp',[..., 'pipTheme.Default', 'pipTheme']);
 ```
 
-If you want add bootbarn themes add **pipTheme.Bootbarn** module in angular module dependencies.
-```javascript
-angular.module('myApp',[..., 'pipTheme.Bootbarn', 'pipTheme']);
-```
-
 ## <a name="def_themes"></a> Default Themes
 
 **pipTheme.Default** configuration includes blue, pink, amber, orange, green, navy and grey themes.
@@ -85,21 +80,25 @@ angular.module('myApp',[..., 'pipTheme']);
 ...
 
  thisModule.controller('MyController',
-    function (pipTheme) {
+    function ($scope, pipTheme) {
+        $scope.fullReset = false;
+        $scope.partialReset = false;
         $scope.setCurrentTheme = setCurrentTheme;
 
         return;
 
         function setCurrentTheme(theme) {
-            pipTheme.setCurrentTheme(theme);
+            pipTheme.use(theme, $scope.fullReset, $scope.partialReset);
         };
     })
 ```
 
 ### Methods
 
-* **setCurrentTheme** - change current theme. Parameters: *theme* - name of a previously initialized theme.
-* **initializeTheme** - initialize theme in application after initialize theme with $mdTheming provider in config. Parameters: *theme* - name of a previously initialized theme.
+* **use** - change current theme. Parameters: *theme* - name of a previously initialized theme.
+* **initTheme** - update theme parameter in provider. Parameters: *theme* - name of a previously initialized theme.
+* **initSetRoot** - update parameter $rootScope reset when you update current theme. Parameters: *root* - true or false.
+* **initPersist** - update parameter for updating localStorage when you update current theme. Parameters: *store* - true or false.
 
 
 ## <a name="custom"></a> Custom Theme
@@ -169,7 +168,6 @@ You can specify a color palette for a given color intention by calling the appro
 ### Add css variables and styles 
 
 You may add variables for themes class and after call mixin **generate-theme**.
-In project needs add **pip-webui-css.less** wich you find in /dist [pip-webui-css](https://github.com/pip-webui/pip-webui-css).
 
 #### Usage
 
@@ -186,7 +184,8 @@ In project needs add **pip-webui-css.less** wich you find in /dist [pip-webui-cs
         @color-green-error // background color for badge   
         @color-content // background color for content window
         @color-window // background color for window
-        @color-green-accent-hue; // accent color wich some opacity
+        @color-green-accent-hue // accent color wich some opacity
+        @color-green-warm; 
 
 .generate-theme(green, @color-green-theme);
 ```
@@ -209,6 +208,7 @@ In final you have next css classes:
 * **color-toast** - background color for toast 
 * **color-content-bg** - background content
 * **color-window-bg** - background window
+* **color-warm-bg** - background warm
 * **color-disabled** - disabling color
 * **color-disabled-bg** - background wich  disabling color
 
