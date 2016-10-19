@@ -8,7 +8,9 @@
     function run (localStorageService, $rootScope) {
         try {
             $rootScope.$theme =  localStorageService.get('theme') || 'blue';
-        } catch (ex) {}
+        } catch (ex) {
+            
+        }
     }
     
     thisModule.provider('pipTheme', function() {
@@ -36,8 +38,8 @@
             
             // Resetting root scope to force update language on the screen
             function resetContent(fullReset, partialReset) {
-                fullReset = fullReset !== undefined ? !!fullReset : true;
-                partialReset = partialReset !== undefined ? !!partialReset : true;
+                fullReset = fullReset !== undefined ? !!fullReset : false;
+                partialReset = partialReset !== undefined ? !!partialReset : false;
 
                 $rootScope.$reset = fullReset;
                 $rootScope.$partialReset = partialReset;
@@ -100,201 +102,6 @@
 
     });
     
-})();
-
-(function () {
-    'use strict';
-    angular.module('pipTheme.Bootbarn', [
-        'pipTheme.Bootbarn.Warm',
-        'pipTheme.Bootbarn.Cool',
-        'pipTheme.Bootbarn.Monochrome'
-    ]);
-})();
-
-(function () {
-    'use strict';
-    config.$inject = ['$mdThemingProvider'];
-    var thisModule = angular.module('pipTheme.Bootbarn.Cool', ['ngMaterial']);
-
-    thisModule.config(config);
-
-    function config($mdThemingProvider) {
-        // pipTranslateProvider.translations('en', {
-        //     THEME: 'Theme',
-        //     'bootbarn-cool': 'Cool'
-        // });
-
-        // pipTranslateProvider.translations('ru', {
-        //     THEME: 'Тема',
-        //     'bootbarn-cool': ''
-        // });
-        
-        var coolBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(250, 250, 250, 1)',
-            'A200': 'rgba(69, 90, 100, 1)'
-        });
-        $mdThemingProvider.definePalette('bootbarn-cool-background', coolBackgroundPalette);
-
-        var coolPrimaryPalette = $mdThemingProvider.extendPalette('grey', {
-            '300': 'rgba(69, 90, 100, .54)',
-            '500': 'rgba(69, 90, 100, 1)',
-            'contrastLightColors': ['500', '300']
-        });
-        $mdThemingProvider.definePalette('bootbarn-cool-primary', coolPrimaryPalette);
-
-
-        var coolAccentPalette = $mdThemingProvider.extendPalette('green', {
-            'A700': 'rgba(76, 175, 80, 1)',
-            'contrastLightColors': ['A700']
-        });
-        $mdThemingProvider.definePalette('bootbarn-cool-accent', coolAccentPalette);
-
-        $mdThemingProvider.theme('bootbarn-cool')
-            .primaryPalette('bootbarn-cool-primary', {
-                'default': '500',
-                'hue-1': '300'
-            })
-            .backgroundPalette('bootbarn-cool-background', {
-                'default': '50',  // background
-                'hue-1': 'A200',  // tiles dialog
-                'hue-2': 'A700'   // app bar
-            })
-            .warnPalette('red', {
-                'default': 'A200'
-            })
-            .accentPalette('bootbarn-cool-accent', {
-                'default': 'A700'
-            });
-
-        $mdThemingProvider.alwaysWatchTheme(true);
-
-    }
-})();
-
-(function () {
-    'use strict';
-    config.$inject = ['$mdThemingProvider'];
-    var thisModule = angular.module('pipTheme.Bootbarn.Monochrome', ['ngMaterial']);
-
-    thisModule.config(config);
-
-    function config($mdThemingProvider) {
-        // pipTranslateProvider.translations('en', {
-        //     THEME: 'Theme',
-        //     'bootbarn-monochrome': 'Monochrome'
-        // });
-
-        // pipTranslateProvider.translations('ru', {
-        //     THEME: 'Тема',
-        //     'bootbarn-monochrome': ''
-        // });
-        
-        var monochromeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-            'A100': 'rgba(250, 250, 250, 1)',
-            'A200': 'rgba(38, 50, 56, 1)'
-        });
-        $mdThemingProvider.definePalette('bootbarn-monochrome-background', monochromeBackgroundPalette);
-
-        var monochromePrimaryPalette = $mdThemingProvider.extendPalette('grey', {
-            '300': 'rgba(38, 50, 56, .54)',
-            '500': 'rgba(38, 50, 56, 1)',
-            'contrastLightColors': ['500', '300']
-        });
-        $mdThemingProvider.definePalette('bootbarn-monochrome-primary', monochromePrimaryPalette);
-
-
-        var monochromeAccentPalette = $mdThemingProvider.extendPalette('green', {
-            'A700': 'rgba(76, 175, 80, 1)',
-            'contrastLightColors': ['A700']
-        });
-        $mdThemingProvider.definePalette('bootbarn-monochrome-accent', monochromeAccentPalette);
-
-        $mdThemingProvider.theme('bootbarn-monochrome')
-            .primaryPalette('bootbarn-monochrome-primary', {
-                'default': '500',
-                'hue-1': '300'
-            })
-            .backgroundPalette('bootbarn-monochrome-background', {
-                'default': '50',  // background
-                'hue-1': 'A200',  // tiles dialog
-                'hue-2': 'A700'   // app bar
-            })
-            .warnPalette('red', {
-                'default': 'A200'
-            })
-            .accentPalette('bootbarn-monochrome-accent', {
-                'default': 'A700'
-            });
-
-        $mdThemingProvider.alwaysWatchTheme(true);
-
-    }
-})();
-
-(function () {
-    'use strict';
-    config.$inject = ['$mdThemingProvider'];
-    var thisModule = angular.module('pipTheme.Bootbarn.Warm', ['ngMaterial']);
-
-    thisModule.config(config);
-
-    function config($mdThemingProvider) {
-        // pipTranslateProvider.translations('en', {
-        //     THEME: 'Theme',
-        //     'bootbarn-warm': 'Warm'
-        // });
-
-        // pipTranslateProvider.translations('ru', {
-        //     THEME: 'Тема',
-        //     'bootbarn-warm': 'Коричневая'
-        // });
-
-        $mdThemingProvider.alwaysWatchTheme(true);
-
-        var warmBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
-                'A100': 'rgba(250, 250, 250, 1)',
-                'A200': 'rgba(177, 55, 34, 1)'
-            })
-            ;
-        $mdThemingProvider.definePalette('bootbarn-warm-background', warmBackgroundPalette);
-
-        var warmPrimaryPalette = $mdThemingProvider.extendPalette('brown', {
-            '300': 'rgba(177, 55, 34, .54)',
-            '500': 'rgba(177, 55, 34, 1)',
-            'contrastLightColors': ['500', '300']
-        });
-        $mdThemingProvider.definePalette('bootbarn-warm-primary', warmPrimaryPalette);
-
-
-        var warmAccentPalette = $mdThemingProvider.extendPalette('amber', {
-            'A700': 'rgba(127, 148, 92, 1)',
-            'contrastLightColors': ['A700']
-        });
-        $mdThemingProvider.definePalette('bootbarn-warm-accent', warmAccentPalette);
-
-        var warmErrorPalette = $mdThemingProvider.extendPalette('red', {
-            'A200': 'rgba(255, 87, 34, 1)',
-            'contrastLightColors': ['A200']
-        });
-        $mdThemingProvider.definePalette('bootbarn-warm-error', warmErrorPalette);
-
-        $mdThemingProvider.theme('bootbarn-warm')
-            .primaryPalette('bootbarn-warm-primary', {
-                'default': '500',
-                'hue-1': '300'
-            })
-            .backgroundPalette('bootbarn-warm-background', {
-                'default': '50',  // background
-                'hue-1': 'A200',  // tiles dialog
-                'hue-2': 'A700'   // app bar
-            })
-            .warnPalette('bootbarn-warm-error', {
-                'default': 'A200'
-            })
-            .accentPalette('bootbarn-warm-accent', {
-                'default': 'A700'
-            });
-    }
 })();
 
 (function () {
@@ -777,6 +584,201 @@
             });
         $mdThemingProvider.alwaysWatchTheme(true);
 
+    }
+})();
+
+(function () {
+    'use strict';
+    angular.module('pipTheme.Bootbarn', [
+        'pipTheme.Bootbarn.Warm',
+        'pipTheme.Bootbarn.Cool',
+        'pipTheme.Bootbarn.Monochrome'
+    ]);
+})();
+
+(function () {
+    'use strict';
+    config.$inject = ['$mdThemingProvider'];
+    var thisModule = angular.module('pipTheme.Bootbarn.Cool', ['ngMaterial']);
+
+    thisModule.config(config);
+
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-cool': 'Cool'
+        // });
+
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-cool': ''
+        // });
+        
+        var coolBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+            'A100': 'rgba(250, 250, 250, 1)',
+            'A200': 'rgba(69, 90, 100, 1)'
+        });
+        $mdThemingProvider.definePalette('bootbarn-cool-background', coolBackgroundPalette);
+
+        var coolPrimaryPalette = $mdThemingProvider.extendPalette('grey', {
+            '300': 'rgba(69, 90, 100, .54)',
+            '500': 'rgba(69, 90, 100, 1)',
+            'contrastLightColors': ['500', '300']
+        });
+        $mdThemingProvider.definePalette('bootbarn-cool-primary', coolPrimaryPalette);
+
+
+        var coolAccentPalette = $mdThemingProvider.extendPalette('green', {
+            'A700': 'rgba(76, 175, 80, 1)',
+            'contrastLightColors': ['A700']
+        });
+        $mdThemingProvider.definePalette('bootbarn-cool-accent', coolAccentPalette);
+
+        $mdThemingProvider.theme('bootbarn-cool')
+            .primaryPalette('bootbarn-cool-primary', {
+                'default': '500',
+                'hue-1': '300'
+            })
+            .backgroundPalette('bootbarn-cool-background', {
+                'default': '50',  // background
+                'hue-1': 'A200',  // tiles dialog
+                'hue-2': 'A700'   // app bar
+            })
+            .warnPalette('red', {
+                'default': 'A200'
+            })
+            .accentPalette('bootbarn-cool-accent', {
+                'default': 'A700'
+            });
+
+        $mdThemingProvider.alwaysWatchTheme(true);
+
+    }
+})();
+
+(function () {
+    'use strict';
+    config.$inject = ['$mdThemingProvider'];
+    var thisModule = angular.module('pipTheme.Bootbarn.Monochrome', ['ngMaterial']);
+
+    thisModule.config(config);
+
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-monochrome': 'Monochrome'
+        // });
+
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-monochrome': ''
+        // });
+        
+        var monochromeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+            'A100': 'rgba(250, 250, 250, 1)',
+            'A200': 'rgba(38, 50, 56, 1)'
+        });
+        $mdThemingProvider.definePalette('bootbarn-monochrome-background', monochromeBackgroundPalette);
+
+        var monochromePrimaryPalette = $mdThemingProvider.extendPalette('grey', {
+            '300': 'rgba(38, 50, 56, .54)',
+            '500': 'rgba(38, 50, 56, 1)',
+            'contrastLightColors': ['500', '300']
+        });
+        $mdThemingProvider.definePalette('bootbarn-monochrome-primary', monochromePrimaryPalette);
+
+
+        var monochromeAccentPalette = $mdThemingProvider.extendPalette('green', {
+            'A700': 'rgba(76, 175, 80, 1)',
+            'contrastLightColors': ['A700']
+        });
+        $mdThemingProvider.definePalette('bootbarn-monochrome-accent', monochromeAccentPalette);
+
+        $mdThemingProvider.theme('bootbarn-monochrome')
+            .primaryPalette('bootbarn-monochrome-primary', {
+                'default': '500',
+                'hue-1': '300'
+            })
+            .backgroundPalette('bootbarn-monochrome-background', {
+                'default': '50',  // background
+                'hue-1': 'A200',  // tiles dialog
+                'hue-2': 'A700'   // app bar
+            })
+            .warnPalette('red', {
+                'default': 'A200'
+            })
+            .accentPalette('bootbarn-monochrome-accent', {
+                'default': 'A700'
+            });
+
+        $mdThemingProvider.alwaysWatchTheme(true);
+
+    }
+})();
+
+(function () {
+    'use strict';
+    config.$inject = ['$mdThemingProvider'];
+    var thisModule = angular.module('pipTheme.Bootbarn.Warm', ['ngMaterial']);
+
+    thisModule.config(config);
+
+    function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-warm': 'Warm'
+        // });
+
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-warm': 'Коричневая'
+        // });
+
+        $mdThemingProvider.alwaysWatchTheme(true);
+
+        var warmBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
+                'A100': 'rgba(250, 250, 250, 1)',
+                'A200': 'rgba(177, 55, 34, 1)'
+            })
+            ;
+        $mdThemingProvider.definePalette('bootbarn-warm-background', warmBackgroundPalette);
+
+        var warmPrimaryPalette = $mdThemingProvider.extendPalette('brown', {
+            '300': 'rgba(177, 55, 34, .54)',
+            '500': 'rgba(177, 55, 34, 1)',
+            'contrastLightColors': ['500', '300']
+        });
+        $mdThemingProvider.definePalette('bootbarn-warm-primary', warmPrimaryPalette);
+
+
+        var warmAccentPalette = $mdThemingProvider.extendPalette('amber', {
+            'A700': 'rgba(127, 148, 92, 1)',
+            'contrastLightColors': ['A700']
+        });
+        $mdThemingProvider.definePalette('bootbarn-warm-accent', warmAccentPalette);
+
+        var warmErrorPalette = $mdThemingProvider.extendPalette('red', {
+            'A200': 'rgba(255, 87, 34, 1)',
+            'contrastLightColors': ['A200']
+        });
+        $mdThemingProvider.definePalette('bootbarn-warm-error', warmErrorPalette);
+
+        $mdThemingProvider.theme('bootbarn-warm')
+            .primaryPalette('bootbarn-warm-primary', {
+                'default': '500',
+                'hue-1': '300'
+            })
+            .backgroundPalette('bootbarn-warm-background', {
+                'default': '50',  // background
+                'hue-1': 'A200',  // tiles dialog
+                'hue-2': 'A700'   // app bar
+            })
+            .warnPalette('bootbarn-warm-error', {
+                'default': 'A200'
+            })
+            .accentPalette('bootbarn-warm-accent', {
+                'default': 'A700'
+            });
     }
 })();
 
