@@ -8,7 +8,9 @@
     function run (localStorageService, $rootScope) {
         try {
             $rootScope.$theme =  localStorageService.get('theme') || 'blue';
-        } catch (ex) {}
+        } catch (ex) {
+            
+        }
     }
     
     thisModule.provider('pipTheme', function() {
@@ -36,8 +38,8 @@
             
             // Resetting root scope to force update language on the screen
             function resetContent(fullReset, partialReset) {
-                fullReset = fullReset !== undefined ? !!fullReset : true;
-                partialReset = partialReset !== undefined ? !!partialReset : true;
+                fullReset = fullReset !== undefined ? !!fullReset : false;
+                partialReset = partialReset !== undefined ? !!partialReset : false;
 
                 $rootScope.$reset = fullReset;
                 $rootScope.$partialReset = partialReset;
