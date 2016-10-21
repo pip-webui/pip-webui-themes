@@ -21,7 +21,7 @@
     thisModule.config(function ($stateProvider, $urlRouterProvider,
                                 $mdThemingProvider, $mdIconProvider) {
 
-         //$mdIconProvider.iconSet('icons', '../../dist/images/icons.svg', 512);
+         $mdIconProvider.iconSet('icons', 'images/icons.svg', 512);
             for (var i = 0; i < content.length; i++) {
                 var contentItem = content[i];
                 $stateProvider.state(contentItem.state, contentItem);
