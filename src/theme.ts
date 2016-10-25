@@ -12,7 +12,7 @@
         }
     }
     
-    thisModule.provider('pipTheme', function() {
+    thisModule.provider('pipTheme', function(): any {
         var 
             theme = 'blue',
             persist = true,
