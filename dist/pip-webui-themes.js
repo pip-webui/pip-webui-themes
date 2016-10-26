@@ -17,10 +17,15 @@
         this.persist = initPersist;
         this.setRoot = initSetRoot;
         this.$get = ['$rootScope', '$timeout', 'localStorageService', '$mdTheming', function ($rootScope, $timeout, localStorageService, $mdTheming) {
+            // Read theme from persistent storage
             if (persist)
                 theme = localStorageService.get('theme') || theme;
+            // Set root variable
             if (setRoot)
                 $rootScope.$theme = theme;
+            // Switch material theme
+            //$('body').attr('md-theme',  $rootScope.$theme).addClass("{{ $theme }}");
+            // Resetting root scope to force update language on the screen
             function resetContent(fullReset, partialReset) {
                 fullReset = fullReset !== undefined ? !!fullReset : false;
                 partialReset = partialReset !== undefined ? !!partialReset : false;
@@ -40,7 +45,11 @@
                         localStorageService.set('theme', theme);
                     if (setRoot)
                         $rootScope.$theme = theme;
+                    // Switch material theme
+                    //$('body').attr('md-theme', "{{ $theme }}").addClass("{{ $theme }}");
+                    // Resetting content.
                     resetContent(fullReset, partialReset);
+                    // Sending notification
                     $rootScope.$broadcast('pipThemeChanged', newTheme);
                 }
                 return theme;
@@ -50,16 +59,19 @@
                 theme: getOrSetTheme
             };
         }];
+        // Initialize theme selection
         function initTheme(newTheme) {
             if (newTheme != null)
                 theme = newTheme;
             return theme;
         }
+        // Initialize persistence flag
         function initPersist(newPersist) {
             if (newPersist != null)
                 persist = newPersist;
             return persist;
         }
+        // Initialize set root flag
         function initSetRoot(newSetRoot) {
             if (newSetRoot != null)
                 setRoot = newSetRoot;
@@ -83,6 +95,14 @@
     var thisModule = angular.module('pipTheme.Bootbarn.Cool', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-cool': 'Cool'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-cool': ''
+        // });
         var coolBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(69, 90, 100, 1)'
@@ -107,7 +127,7 @@
             .backgroundPalette('bootbarn-cool-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -125,6 +145,14 @@
     var thisModule = angular.module('pipTheme.Bootbarn.Monochrome', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-monochrome': 'Monochrome'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-monochrome': ''
+        // });
         var monochromeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(38, 50, 56, 1)'
@@ -149,7 +177,7 @@
             .backgroundPalette('bootbarn-monochrome-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -167,6 +195,14 @@
     var thisModule = angular.module('pipTheme.Bootbarn.Warm', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     'bootbarn-warm': 'Warm'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     'bootbarn-warm': 'Коричневая'
+        // });
         $mdThemingProvider.alwaysWatchTheme(true);
         var warmBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
@@ -197,7 +233,7 @@
             .backgroundPalette('bootbarn-warm-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('bootbarn-warm-error', {
             'default': 'A200'
@@ -215,6 +251,12 @@
         'pipTheme.Amber', 'pipTheme.Orange', 'pipTheme.Green', 'pipTheme.Navy', 'pipTheme.Grey']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема'
+        // });
         $mdThemingProvider.setDefaultTheme('default');
         $mdThemingProvider.alwaysWatchTheme(true);
     }
@@ -226,6 +268,14 @@
     var thisModule = angular.module('pipTheme.Amber', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     amber: 'Amber'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     amber: 'Янтарная'
+        // });
         var orangeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(255, 152, 0, 1)'
@@ -244,7 +294,7 @@
             .backgroundPalette('orange-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -262,6 +312,12 @@
     var thisModule = angular.module('pipTheme.Black', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема'
+        // });
         registerDarkTheme('dark');
         registerBlackTheme('black');
         $mdThemingProvider.alwaysWatchTheme(true);
@@ -284,7 +340,7 @@
                 .backgroundPalette('dark-background', {
                 'default': '800',
                 'hue-1': '900',
-                'hue-2': 'A700'
+                'hue-2': 'A700' // app bar
             })
                 .warnPalette('red', {
                 'default': 'A200'
@@ -313,7 +369,7 @@
                 .backgroundPalette('black-background', {
                 'default': '800',
                 'hue-1': '500',
-                'hue-2': '800'
+                'hue-2': '800' // app bar
             })
                 .warnPalette('red', {
                 'default': 'A200'
@@ -331,6 +387,14 @@
     var thisModule = angular.module('pipTheme.Blue', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     blue: 'Blue',
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     blue: 'Голубая'
+        // });
         registerBlueTheme('default');
         registerBlueTheme('blue');
         $mdThemingProvider.setDefaultTheme('default');
@@ -358,7 +422,7 @@
                 .backgroundPalette('blue-background', {
                 'default': '50',
                 'hue-1': 'A200',
-                'hue-2': 'A700'
+                'hue-2': 'A700' // app bar
             })
                 .warnPalette('red', {
                 'default': 'A200'
@@ -376,6 +440,14 @@
     var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     green: 'Green'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     green: 'Зеленая'
+        // });
         var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(76, 175, 80, 1)'
@@ -398,7 +470,7 @@
             .backgroundPalette('green-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -416,12 +488,21 @@
     var thisModule = angular.module('pipTheme.Grey', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     grey: 'Grey'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     grey: 'Серая'
+        // });
         var thirdPartyPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(255, 152, 0, 1)',
             'A400': '#a9b9c0',
             '500': '#607D8B',
             'A700': '#90A4AE',
+            //'800': '',
             'contrastDefaultColor': 'dark',
             'contrastLightColors': ['300', '400', '500', '600', '700', '800', '900', 'A700']
         });
@@ -434,7 +515,7 @@
             .backgroundPalette('third-party', {
             'default': '50',
             'hue-1': '500',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -452,6 +533,14 @@
     var thisModule = angular.module('pipTheme.Navy', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     navy: 'Navy'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     navy: 'Сине-серая'
+        // });
         var greyPalette = $mdThemingProvider.extendPalette('grey', {
             '700': 'rgba(86, 97, 125, 1)',
             '800': 'rgba(86, 97, 125, .54)',
@@ -470,7 +559,7 @@
             .backgroundPalette('grey', {
             'default': '50',
             'hue-1': '700',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -488,6 +577,14 @@
     var thisModule = angular.module('pipTheme.Orange', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     orange: 'Orange'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     orange: 'Оранжевая'
+        // });
         var RedBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(255, 112, 67, 1)',
@@ -509,7 +606,7 @@
             .backgroundPalette('red-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
@@ -527,6 +624,14 @@
     var thisModule = angular.module('pipTheme.Pink', ['ngMaterial']);
     thisModule.config(config);
     function config($mdThemingProvider) {
+        // pipTranslateProvider.translations('en', {
+        //     THEME: 'Theme',
+        //     pink: 'Pink'
+        // });
+        // pipTranslateProvider.translations('ru', {
+        //     THEME: 'Тема',
+        //     pink: 'Розовая',
+        // });
         var PinkBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
             'A100': 'rgba(250, 250, 250, 1)',
             'A200': 'rgba(188, 86, 121, 1)',
@@ -549,7 +654,7 @@
             .backgroundPalette('pink-background', {
             'default': '50',
             'hue-1': 'A200',
-            'hue-2': 'A700'
+            'hue-2': 'A700' // app bar
         })
             .warnPalette('red', {
             'default': 'A200'
