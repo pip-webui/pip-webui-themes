@@ -1,69 +1,4 @@
-(function () {
-    'use strict';
-    run.$inject = ['pipTheme'];
-    var thisModule = angular.module('pipTheme', ['LocalStorageModule', 'ngMaterial']);
-    thisModule.run(run);
-    function run(pipTheme) {
-        pipTheme.theme();
-    }
-    thisModule.provider('pipTheme', function () {
-        var theme = 'default', persist = true, setRoot = true;
-        this.use = initTheme;
-        this.init = initTheme;
-        this.persist = initPersist;
-        this.setRoot = initSetRoot;
-        this.$get = ['$rootScope', '$timeout', 'localStorageService', '$mdTheming', function ($rootScope, $timeout, localStorageService, $mdTheming) {
-            if (persist)
-                theme = localStorageService.get('theme') || theme;
-            if (setRoot)
-                $rootScope.$theme = theme;
-            function resetContent(fullReset, partialReset) {
-                fullReset = fullReset !== undefined ? !!fullReset : false;
-                partialReset = partialReset !== undefined ? !!partialReset : false;
-                $rootScope.$reset = fullReset;
-                $rootScope.$partialReset = partialReset;
-                $timeout(function () {
-                    $rootScope.$reset = false;
-                    $rootScope.$partialReset = false;
-                }, 0);
-            }
-            function getOrSetTheme(newTheme, fullReset, partialReset) {
-                if (newTheme != null && newTheme != theme) {
-                    if (!(theme in $mdTheming.THEMES))
-                        throw new Error('Theme ' + theme + ' is not registered. Please, register it first with $mdThemingProvider');
-                    theme = newTheme;
-                    if (persist)
-                        localStorageService.set('theme', theme);
-                    if (setRoot)
-                        $rootScope.$theme = theme;
-                    resetContent(fullReset, partialReset);
-                    $rootScope.$broadcast('pipThemeChanged', newTheme);
-                }
-                return theme;
-            }
-            return {
-                use: getOrSetTheme,
-                theme: getOrSetTheme
-            };
-        }];
-        function initTheme(newTheme) {
-            if (newTheme != null)
-                theme = newTheme;
-            return theme;
-        }
-        function initPersist(newPersist) {
-            if (newPersist != null)
-                persist = newPersist;
-            return persist;
-        }
-        function initSetRoot(newSetRoot) {
-            if (newSetRoot != null)
-                setRoot = newSetRoot;
-            return setRoot;
-        }
-    });
-})();
-
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function () {
     'use strict';
     angular.module('pipTheme.Bootbarn', [
@@ -72,7 +7,7 @@
         'pipTheme.Bootbarn.Monochrome'
     ]);
 })();
-
+},{}],2:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -114,7 +49,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],3:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -156,7 +91,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],4:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -203,7 +138,7 @@
         });
     }
 })();
-
+},{}],5:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -215,7 +150,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],6:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -251,7 +186,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],7:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -320,7 +255,7 @@
         }
     }
 })();
-
+},{}],8:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -365,7 +300,7 @@
         }
     }
 })();
-
+},{}],9:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -405,7 +340,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],10:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -441,7 +376,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],11:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -477,7 +412,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],12:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -516,7 +451,7 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],13:[function(require,module,exports){
 (function () {
     'use strict';
     config.$inject = ['$mdThemingProvider'];
@@ -556,7 +491,73 @@
         $mdThemingProvider.alwaysWatchTheme(true);
     }
 })();
-
+},{}],14:[function(require,module,exports){
+(function () {
+    'use strict';
+    run.$inject = ['pipTheme'];
+    var thisModule = angular.module('pipTheme', ['LocalStorageModule', 'ngMaterial']);
+    thisModule.run(run);
+    function run(pipTheme) {
+        pipTheme.theme();
+    }
+    thisModule.provider('pipTheme', function () {
+        var theme = 'default', persist = true, setRoot = true;
+        this.use = initTheme;
+        this.init = initTheme;
+        this.persist = initPersist;
+        this.setRoot = initSetRoot;
+        this.$get = ['$rootScope', '$timeout', 'localStorageService', '$mdTheming', function ($rootScope, $timeout, localStorageService, $mdTheming) {
+            if (persist)
+                theme = localStorageService.get('theme') || theme;
+            if (setRoot)
+                $rootScope.$theme = theme;
+            function resetContent(fullReset, partialReset) {
+                fullReset = fullReset !== undefined ? !!fullReset : false;
+                partialReset = partialReset !== undefined ? !!partialReset : false;
+                $rootScope.$reset = fullReset;
+                $rootScope.$partialReset = partialReset;
+                $timeout(function () {
+                    $rootScope.$reset = false;
+                    $rootScope.$partialReset = false;
+                }, 0);
+            }
+            function getOrSetTheme(newTheme, fullReset, partialReset) {
+                if (newTheme != null && newTheme != theme) {
+                    if (!(theme in $mdTheming.THEMES))
+                        throw new Error('Theme ' + theme + ' is not registered. Please, register it first with $mdThemingProvider');
+                    theme = newTheme;
+                    if (persist)
+                        localStorageService.set('theme', theme);
+                    if (setRoot)
+                        $rootScope.$theme = theme;
+                    resetContent(fullReset, partialReset);
+                    $rootScope.$broadcast('pipThemeChanged', newTheme);
+                }
+                return theme;
+            }
+            return {
+                use: getOrSetTheme,
+                theme: getOrSetTheme
+            };
+        }];
+        function initTheme(newTheme) {
+            if (newTheme != null)
+                theme = newTheme;
+            return theme;
+        }
+        function initPersist(newPersist) {
+            if (newPersist != null)
+                persist = newPersist;
+            return persist;
+        }
+        function initSetRoot(newSetRoot) {
+            if (newSetRoot != null)
+                setRoot = newSetRoot;
+            return setRoot;
+        }
+    });
+})();
+},{}]},{},[2,3,4,1,6,7,8,9,10,11,12,13,5,14])
 
 
 //# sourceMappingURL=pip-webui-themes.js.map

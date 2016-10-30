@@ -1,3 +1,4 @@
+declare module pip {
 
 
 
@@ -11,3 +12,6 @@
 
 
 
+
+}
+

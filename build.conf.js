@@ -1,13 +1,16 @@
 module.exports = {
     module: {
         name: 'pipThemes',
-        styles: 'theme'
+        styles: 'theme',
+        export: 'pip'
     },
     build: {
-        js: true,
-        ts: true,
+        js: false,
+        ts: false,
+        tsd: true,
+        bundle: true,
         html: false,
-        css: true,
+        less: true,
         lib: true,
         images: false,
         dist: false
