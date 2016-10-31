@@ -2,7 +2,7 @@ module.exports = {
     module: {
         name: 'pipThemes',
         styles: 'theme',
-        export: 'pip',
+        export: 'pip.themes',
         standalone: 'pip.themes'
     },
     build: {
