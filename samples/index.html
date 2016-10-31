@@ -3,7 +3,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>WebUI Framework. PipDevs Team</title>
+    <title>WebUI Themes Sample</title>
 
     <link rel="stylesheet" href="../lib/pip-webui-lib.css"/>
     <link rel="stylesheet" href="../dist/pip-webui-themes.css"/>
@@ -33,8 +33,8 @@
     <script src="index.js"></script>
 
 </head>
-<body ng-app="app" class="layout-column layout-align-start-center {{$theme}}" ng-controller="AppController"
-    md-theme="{{$theme}}">
+
+<body ng-app="app" class="layout-column layout-align-start-center" ng-controller="AppController" ng-if="!$reset">
 
 <md-toolbar ng-if="!$partialReset">
     <div class="md-toolbar-tools">
@@ -45,6 +45,7 @@
         <span>{{'THEME' |translate}}</span>
     </div>
 </md-toolbar>
+
 <div class="layout-row flex" style="height: calc(100% - 64px); width: 100%">
     <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-sm')"
                 class="md-whiteframe-z2 md-sidenav-left layout-column color-content-bg">

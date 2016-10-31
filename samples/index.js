@@ -5,16 +5,17 @@
 
     var content = [
         { title: 'Default', state: 'default', url: '/default', controller: 'ThemesController', templateUrl: 'themes_default.html' },
-        { title: 'Bootbarn', state: 'bootbarn', url: '/bootbarn', controller: 'ThemesBootbarnController', templateUrl: 'themes_default.html'}
+        { title: 'Bootbarn', state: 'bootbarn', url: '/bootbarn', controller: 'ThemesBootBarnController', templateUrl: 'themes_default.html'}
     ];
 
 
     var thisModule = angular.module('app', [
         'ngMaterial',
-        'ui.router', 'ui.utils',
+        'ui.router', 
+        'ui.utils',
         
         'appThemesDefault', 
-        'appThemesBootbarn',
+        'appThemesBootBarn',
         'appTranslate'
     ]);
 
@@ -31,8 +32,7 @@
     );
 
     thisModule.controller('AppController', 
-        function ($scope, $rootScope, $state, $mdSidenav, $injector,  localStorageService) {
-
+        function ($scope, $rootScope, $state, $mdSidenav, $injector, $timeout) {
             
             var pipTranslate = $injector.has('pipTranslate') ? $injector.get('pipTranslate') : null;
             if (pipTranslate) {
@@ -45,11 +45,10 @@
             }
             $scope.content = content;
             $scope.onThemeClick = function(theme) {
-                $rootScope.$theme = theme;
             };
 
             // Update page after language changed
-            $rootScope.$on('languageChanged', function(event) {
+            $rootScope.$on('pipLanguageChanged', function(event) {
                 console.log('Reloading...');
                 console.log($state.current);
                 console.log($state.params);
@@ -58,8 +57,13 @@
             });
 
             // Update page after theme changed
-            $rootScope.$on('themeChanged', function(event) {
-                $state.reload();
+            $rootScope.$on('pipThemeChanged', function(event) {
+                //$state.reload();
+                // $rootScope.$reset = true;
+
+                // $timeout(function() {
+                //     $rootScope.$reset = false;
+                // }, 0);
             });
                         
             $scope.onSwitchPage = function(state) {
