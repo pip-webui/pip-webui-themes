@@ -2,6 +2,7 @@
 
 export let ThemeRootVar = "$theme";
 export let ThemeChangedEvent = "pipThemeChanged";    
+export let ThemeResetPage = "pipResetPage";    
 
 export interface IThemeService {
     theme: string;
@@ -93,7 +94,7 @@ class ThemeService implements IThemeService {
             this.save();                
 
             this._rootScope.$emit(ThemeChangedEvent, value);
-            this._rootScope.$emit('pipResetPage');
+            this._rootScope.$emit(ThemeResetPage);
         }
     }
 
