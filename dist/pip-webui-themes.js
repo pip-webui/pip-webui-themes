@@ -141,6 +141,7 @@ angular.module('pipTheme.BootBarn', [
 initTheme.$inject = ['pipTheme'];
 exports.ThemeRootVar = "$theme";
 exports.ThemeChangedEvent = "pipThemeChanged";
+exports.ThemeResetPage = "pipResetPage";
 var ThemeConfig = (function () {
     function ThemeConfig() {
     }
@@ -186,7 +187,7 @@ var ThemeService = (function () {
                 this._log.debug("Changing theme to " + value);
                 this.save();
                 this._rootScope.$emit(exports.ThemeChangedEvent, value);
-                this._rootScope.$emit('pipResetPage');
+                this._rootScope.$emit(exports.ThemeResetPage);
             }
         },
         enumerable: true,
