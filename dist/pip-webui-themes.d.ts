@@ -7,6 +7,19 @@ function configureBootBarnMonochromeTheme($mdThemingProvider: ng.material.IThemi
 function configureBootBarnWarmTheme($mdThemingProvider: any): void;
 
 
+
+export let ThemeRootVar: string;
+export let ThemeChangedEvent: string;
+export let ThemeResetPage: string;
+export interface IThemeService {
+    theme: string;
+    use(language: string): string;
+}
+export interface IThemeProvider extends IThemeService, ng.IServiceProvider {
+    setRootVar: boolean;
+    persist: boolean;
+}
+
 function configureDefaultAmberTheme($mdThemingProvider: ng.material.IThemingProvider): void;
 
 function configureDefaultBlackTheme($mdThemingProvider: ng.material.IThemingProvider): void;
@@ -23,19 +36,6 @@ function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingPro
 
 function configureDefaultPinkTheme($mdThemingProvider: ng.material.IThemingProvider): void;
 
-
-
-export let ThemeRootVar: string;
-export let ThemeChangedEvent: string;
-export let ThemeResetPage: string;
-export interface IThemeService {
-    theme: string;
-    use(language: string): string;
-}
-export interface IThemeProvider extends IThemeService, ng.IServiceProvider {
-    setRootVar: boolean;
-    persist: boolean;
-}
 
 }
 
