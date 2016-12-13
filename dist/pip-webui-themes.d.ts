@@ -1,22 +1,5 @@
 declare module pip.themes {
 
-function configureDefaultAmberTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultBlackTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultBlueTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultGreenTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultGreyTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureDefaultPinkTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-
 function configureBootBarnCoolTheme($mdThemingProvider: ng.material.IThemingProvider): void;
 
 function configureBootBarnMonochromeTheme($mdThemingProvider: ng.material.IThemingProvider): void;
@@ -36,6 +19,23 @@ export interface IThemeProvider extends IThemeService, ng.IServiceProvider {
     setRootVar: boolean;
     persist: boolean;
 }
+
+function configureDefaultAmberTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultBlackTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultBlueTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultGreenTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultGreyTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureDefaultPinkTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
 
 }
 
