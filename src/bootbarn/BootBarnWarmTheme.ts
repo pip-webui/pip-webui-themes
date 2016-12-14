@@ -35,7 +35,7 @@ function configureBootBarnWarmTheme($mdThemingProvider) {
     $mdThemingProvider.definePalette('bootbarn-warm-accent', warmAccentPalette);
 
     let warmErrorPalette = $mdThemingProvider.extendPalette('red', {
-        'A200': 'rgba(255, 87, 34, 1)',
+        'A200': 'rgba(255, 82, 82, 1)',
         'contrastLightColors': ['A200']
     });
     $mdThemingProvider.definePalette('bootbarn-warm-error', warmErrorPalette);
