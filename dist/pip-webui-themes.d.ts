@@ -1,5 +1,12 @@
 declare module pip.themes {
 
+function configureBootBarnCoolTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureBootBarnMonochromeTheme($mdThemingProvider: ng.material.IThemingProvider): void;
+
+function configureBootBarnWarmTheme($mdThemingProvider: any): void;
+
+
 
 export let ThemeRootVar: string;
 export let ThemeChangedEvent: string;
@@ -28,13 +35,6 @@ function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvi
 function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingProvider): void;
 
 function configureDefaultPinkTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-
-function configureBootBarnCoolTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureBootBarnMonochromeTheme($mdThemingProvider: ng.material.IThemingProvider): void;
-
-function configureBootBarnWarmTheme($mdThemingProvider: any): void;
 
 
 }
