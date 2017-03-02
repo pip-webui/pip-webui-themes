@@ -12,7 +12,7 @@ module.exports = {
         tsd: true,
         bundle: true,
         html: false,
-        less: true,
+        sass: true,
         lib: true,
         images: false,
         dist: false
