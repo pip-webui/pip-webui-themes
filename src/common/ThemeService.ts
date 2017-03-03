@@ -22,22 +22,20 @@ class ThemeService implements IThemeService {
     private _config: ThemeConfig;
     private _setRootVar: boolean;
     private _persist: boolean;
-    private _theming: any;
     private _currentTheme: string = null;
 
     public constructor(
         private $log: ng.ILogService,
         private $rootScope: ng.IRootScopeService,
         private $window: ng.IWindowService,
+        private $mdTheming,
         config: ThemeConfig,
         setRootVar: boolean,
         persist: boolean,
-        $mdTheming: any
     ) {
         this._setRootVar = setRootVar;
         this._persist = persist;
         this._config = config;
-        this._theming = $mdTheming;
 
         if (this._persist && this.$window.localStorage && this._config.theme == "default")
             this._config.theme = this.$window.localStorage.getItem('theme') || this._config.theme;
@@ -78,7 +76,7 @@ class ThemeService implements IThemeService {
 
     public set theme(value: string) {
         if (value != this._config.theme) {
-            if (!(value in this._theming.THEMES))
+            if (!(value in this.$mdTheming.THEMES))
                 throw new Error('Theme ' + value + ' is not defined. Please, register it first with $mdThemingProvider');
 
             this._config.theme = value;
@@ -145,11 +143,11 @@ class ThemeProvider implements IThemeProvider {
         $log: ng.ILogService, 
         $window: ng.IWindowService,
         $mdTheming: any
-    ): any {
+    ): ThemeService {
         "ngInject";
 
         if (_.isNull(this._service) || _.isUndefined(this._service)) 
-            this._service = new ThemeService( $log, $rootScope, $window, this._config, this._setRootVar, this._persist, $mdTheming);
+            this._service = new ThemeService( $log, $rootScope, $window, this._config,  $mdTheming, this._setRootVar, this._persist);
 
         return this._service;
     }
