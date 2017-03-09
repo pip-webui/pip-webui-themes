@@ -11,7 +11,8 @@ function configureDefaultTheme($mdThemingProvider) {
     $mdThemingProvider.alwaysWatchTheme(true);
 }
 
-angular.module('pipTheme.Default', [
+angular
+    .module('pipTheme.Default', [
         'ngMaterial',
         'pipTheme.Blue', 
         'pipTheme.Pink',

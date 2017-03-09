@@ -90,6 +90,7 @@ class ThemeService implements IThemeService {
 
 }
 
+
 class ThemeProvider implements IThemeProvider {
     private _config: ThemeConfig = new ThemeConfig();
     private _setRootVar: boolean = true;
@@ -148,9 +149,11 @@ class ThemeProvider implements IThemeProvider {
     }
 }
 
+
 function initTheme(pipTheme: IThemeService) {
     pipTheme.theme;
 }
+
 
 angular
     .module('pipTheme')

@@ -48,7 +48,9 @@ function configureDefaultGreenTheme($mdThemingProvider: ng.material.IThemingProv
     $mdThemingProvider.alwaysWatchTheme(true);
 }
 
+
 angular
     .module('pipTheme.Green', [ 'ngMaterial' ])
     .config(configureDefaultGreenTheme);
+
 })();

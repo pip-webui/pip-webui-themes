@@ -1,5 +1,6 @@
 (() => {
-    function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvider) {
+
+function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
     //     navy: 'Navy'
@@ -43,4 +44,5 @@
 angular
     .module('pipTheme.Navy', [ 'ngMaterial' ])
     .config(configureDefaultNavyTheme);
+    
 })();

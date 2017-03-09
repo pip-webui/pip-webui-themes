@@ -1,4 +1,5 @@
 (() => {
+
 function configureBootBarnWarmTheme($mdThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
@@ -57,6 +58,8 @@ function configureBootBarnWarmTheme($mdThemingProvider) {
     });
 }
 
+
 angular.module('pipTheme.BootBarn.Warm', [ 'ngMaterial' ])
     .config(configureBootBarnWarmTheme);
+
 })();

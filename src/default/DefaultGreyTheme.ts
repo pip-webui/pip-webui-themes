@@ -44,7 +44,9 @@ function configureDefaultGreyTheme($mdThemingProvider: ng.material.IThemingProvi
     $mdThemingProvider.alwaysWatchTheme(true);
 }
 
+
 angular
     .module('pipTheme.Grey', [ 'ngMaterial' ])
     .config(configureDefaultGreyTheme);
+
 })();

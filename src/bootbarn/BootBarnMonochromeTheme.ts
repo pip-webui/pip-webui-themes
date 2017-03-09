@@ -50,7 +50,9 @@ function configureBootBarnMonochromeTheme($mdThemingProvider: ng.material.IThemi
     $mdThemingProvider.alwaysWatchTheme(true);
 }
 
+
 angular
     .module('pipTheme.BootBarn.Monochrome', [ 'ngMaterial' ])
     .config(configureBootBarnMonochromeTheme);
+
 })();

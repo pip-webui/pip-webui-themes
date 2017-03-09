@@ -111,10 +111,6 @@ You can specify a color palette for a given color intention by calling the appro
 
 ```javascript
 (function () {
-    'use strict';
-    var thisModule = angular.module('pipTheme.Green', ['ngMaterial']);
-
-    thisModule.config(config);
 
     function config($mdThemingProvider, pipTranslateProvider) {
 
@@ -153,6 +149,11 @@ You can specify a color palette for a given color intention by calling the appro
             });
         $mdThemingProvider.alwaysWatchTheme(true);
     }
+
+   angular
+    .module('pipTheme.Green', ['ngMaterial'])
+    .config(config);
+
 })();
 
 ```

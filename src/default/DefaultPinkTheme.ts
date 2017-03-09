@@ -1,5 +1,6 @@
 (() => {
-    function configureDefaultPinkTheme($mdThemingProvider: ng.material.IThemingProvider) {
+
+function configureDefaultPinkTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
     //     pink: 'Pink'
@@ -48,4 +49,5 @@
 angular
     .module('pipTheme.Pink', [ 'ngMaterial' ])
     .config(configureDefaultPinkTheme);
+    
 })();

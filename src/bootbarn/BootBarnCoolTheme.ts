@@ -51,7 +51,9 @@ function configureBootBarnCoolTheme($mdThemingProvider: ng.material.IThemingProv
     $mdThemingProvider.alwaysWatchTheme(true);
 }
 
+
 angular
     .module('pipTheme.BootBarn.Cool', [ 'ngMaterial' ])
     .config(configureBootBarnCoolTheme);
+
 })();

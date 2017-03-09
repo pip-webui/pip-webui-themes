@@ -1,4 +1,5 @@
 (() => {
+
 function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
@@ -47,4 +48,5 @@ function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingPro
 angular
     .module('pipTheme.Orange', [ 'ngMaterial' ])
     .config(configureDefaultOrangeTheme);
+
 })();
