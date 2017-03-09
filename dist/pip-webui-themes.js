@@ -38,7 +38,6 @@ function configureBootBarnCoolTheme($mdThemingProvider) {
 angular
     .module('pipTheme.BootBarn.Cool', ['ngMaterial'])
     .config(configureBootBarnCoolTheme);
-
 },{}],2:[function(require,module,exports){
 configureBootBarnMonochromeTheme.$inject = ['$mdThemingProvider'];
 function configureBootBarnMonochromeTheme($mdThemingProvider) {
@@ -79,7 +78,6 @@ function configureBootBarnMonochromeTheme($mdThemingProvider) {
 angular
     .module('pipTheme.BootBarn.Monochrome', ['ngMaterial'])
     .config(configureBootBarnMonochromeTheme);
-
 },{}],3:[function(require,module,exports){
 configureBootBarnWarmTheme.$inject = ['$mdThemingProvider'];
 function configureBootBarnWarmTheme($mdThemingProvider) {
@@ -124,7 +122,6 @@ function configureBootBarnWarmTheme($mdThemingProvider) {
 }
 angular.module('pipTheme.BootBarn.Warm', ['ngMaterial'])
     .config(configureBootBarnWarmTheme);
-
 },{}],4:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -137,7 +134,6 @@ angular.module('pipTheme.BootBarn', [
     'pipTheme.BootBarn.Cool',
     'pipTheme.BootBarn.Monochrome',
 ]);
-
 },{"./BootBarnCoolTheme":1,"./BootBarnMonochromeTheme":2,"./BootBarnWarmTheme":3}],5:[function(require,module,exports){
 "use strict";
 initTheme.$inject = ['pipTheme'];
@@ -160,8 +156,7 @@ var ThemeService = (function () {
         this._setRootVar = setRootVar;
         this._persist = persist;
         this._config = config;
-        if (this._persist && this.$window.localStorage && this._config.theme == "default")
-            this._config.theme = this.$window.localStorage.getItem('theme') || this._config.theme;
+        this._config.theme = this.$window.localStorage.getItem('theme') || this._config.theme || 'default';
         this.$log.debug("Set theme to " + this._config.theme);
         $('body').attr('md-theme', '{{' + exports.ThemeRootVar + '}}');
         this.save();
@@ -197,9 +192,11 @@ var ThemeService = (function () {
         configurable: true
     });
     ThemeService.prototype.use = function (theme) {
-        if (theme != null)
-            this.theme = theme;
-        return this.theme;
+        if (theme != null) {
+            this._config.theme = theme;
+            this.save();
+        }
+        return this._config.theme;
     };
     return ThemeService;
 }());
@@ -240,15 +237,22 @@ var ThemeProvider = (function () {
         enumerable: true,
         configurable: true
     });
+    ThemeProvider.prototype.save = function () {
+        var body = $('body');
+        body.addClass(this._config.theme);
+    };
     ThemeProvider.prototype.use = function (theme) {
-        if (theme != null)
-            this.theme = theme;
-        return this.theme;
+        if (theme != null) {
+            this._config.theme = theme;
+            this.save();
+        }
+        return this._config.theme;
     };
     ThemeProvider.prototype.$get = ['$rootScope', '$log', '$window', '$mdTheming', function ($rootScope, $log, $window, $mdTheming) {
         "ngInject";
-        if (_.isNull(this._service) || _.isUndefined(this._service))
+        if (_.isUndefined(this._service) || _.isNull(this._service)) {
             this._service = new ThemeService($log, $rootScope, $window, this._config, $mdTheming, this._setRootVar, this._persist);
+        }
         return this._service;
     }];
     return ThemeProvider;
@@ -260,7 +264,6 @@ angular
     .module('pipTheme')
     .provider('pipTheme', ThemeProvider)
     .run(initTheme);
-
 },{}],6:[function(require,module,exports){
 'use strict';
 function __export(m) {
@@ -270,7 +273,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 angular.module('pipTheme', ['ngMaterial']);
 require("./ThemeService");
 __export(require("./ThemeService"));
-
 },{"./ThemeService":5}],7:[function(require,module,exports){
 configureDefaultAmberTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultAmberTheme($mdThemingProvider) {
@@ -305,7 +307,6 @@ function configureDefaultAmberTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Amber', ['ngMaterial'])
     .config(configureDefaultAmberTheme);
-
 },{}],8:[function(require,module,exports){
 configureDefaultBlueTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultBlueTheme($mdThemingProvider) {
@@ -349,7 +350,6 @@ function configureDefaultBlueTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Blue', ['ngMaterial'])
     .config(configureDefaultBlueTheme);
-
 },{}],9:[function(require,module,exports){
 configureDefaultGreenTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultGreenTheme($mdThemingProvider) {
@@ -388,7 +388,6 @@ function configureDefaultGreenTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Green', ['ngMaterial'])
     .config(configureDefaultGreenTheme);
-
 },{}],10:[function(require,module,exports){
 configureDefaultGreyTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultGreyTheme($mdThemingProvider) {
@@ -423,7 +422,6 @@ function configureDefaultGreyTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Grey', ['ngMaterial'])
     .config(configureDefaultGreyTheme);
-
 },{}],11:[function(require,module,exports){
 configureDefaultNavyTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultNavyTheme($mdThemingProvider) {
@@ -458,7 +456,6 @@ function configureDefaultNavyTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Navy', ['ngMaterial'])
     .config(configureDefaultNavyTheme);
-
 },{}],12:[function(require,module,exports){
 configureDefaultOrangeTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultOrangeTheme($mdThemingProvider) {
@@ -496,7 +493,6 @@ function configureDefaultOrangeTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Orange', ['ngMaterial'])
     .config(configureDefaultOrangeTheme);
-
 },{}],13:[function(require,module,exports){
 configureDefaultPinkTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultPinkTheme($mdThemingProvider) {
@@ -535,7 +531,6 @@ function configureDefaultPinkTheme($mdThemingProvider) {
 angular
     .module('pipTheme.Pink', ['ngMaterial'])
     .config(configureDefaultPinkTheme);
-
 },{}],14:[function(require,module,exports){
 "use strict";
 configureDefaultTheme.$inject = ['$mdThemingProvider'];
@@ -562,7 +557,6 @@ angular.module('pipTheme.Default', [
     'pipTheme.Grey'
 ])
     .config(configureDefaultTheme);
-
 },{"./DefaultAmberTheme":7,"./DefaultBlueTheme":8,"./DefaultGreenTheme":9,"./DefaultGreyTheme":10,"./DefaultNavyTheme":11,"./DefaultOrangeTheme":12,"./DefaultPinkTheme":13}],15:[function(require,module,exports){
 "use strict";
 function __export(m) {
@@ -573,7 +567,6 @@ require("./common");
 require("./default");
 require("./bootbarn");
 __export(require("./common"));
-
 },{"./bootbarn":4,"./common":6,"./default":14}]},{},[15])(15)
 });
 

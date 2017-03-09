@@ -22,7 +22,7 @@
 
             function saveSettings(theme) {
                 $rootScope.$theme = theme;
-                pipTheme.use(theme, false, false);
+                pipTheme.use(theme);
             };
         })
 

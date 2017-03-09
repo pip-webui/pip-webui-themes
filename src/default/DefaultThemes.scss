@@ -194,6 +194,7 @@ $color-black-theme:
         $color-badge;
 
 
+@include generate-theme('.default',             $color-blue-theme);
 @include generate-theme('.blue',                $color-blue-theme);
 @include generate-theme('.pink',                $color-pink-theme);
 @include generate-theme('.orange',              $color-orange-theme);

@@ -27,8 +27,8 @@ class ThemeService implements IThemeService {
         this._persist = persist;
         this._config = config;
 
-        if (this._persist && this.$window.localStorage && this._config.theme == "default")
-            this._config.theme = this.$window.localStorage.getItem('theme') || this._config.theme;
+        //if (this._persist && this.$window.localStorage && this._config.theme == "default")
+        this._config.theme = this.$window.localStorage.getItem('theme') || this._config.theme || 'default';
 
         this.$log.debug("Set theme to " + this._config.theme);
 
@@ -39,7 +39,7 @@ class ThemeService implements IThemeService {
 
     private save(): void {
         let body = $('body');
-        let newTheme = this._config.theme;
+        let newTheme: string = this._config.theme;
 
         // Switch material theme
         // body.attr('md-theme', newTheme);
@@ -81,9 +81,11 @@ class ThemeService implements IThemeService {
     }
 
     public use(theme: string): string {
-        if (theme != null)
-            this.theme = theme;
-        return this.theme;
+        if (theme != null) {
+            this._config.theme = theme;
+            this.save();    
+        }     
+        return this._config.theme;
     }
 
 }
@@ -123,9 +125,12 @@ class ThemeProvider implements IThemeProvider {
     }
 
     public use(theme: string): string {
-        if (theme != null)
-            this.theme = theme;
-        return this.theme;
+        if (theme != null) {
+            this._config.theme = theme;
+            let body = $('body');
+            body.addClass(this._config.theme);
+        }
+        return this._config.theme;
     }
 
     public $get(
@@ -135,10 +140,10 @@ class ThemeProvider implements IThemeProvider {
         $mdTheming: any
     ): ThemeService {
         "ngInject";
-
-        if (_.isNull(this._service) || _.isUndefined(this._service)) 
+        if (_.isUndefined(this._service) || _.isNull(this._service))  {
             this._service = new ThemeService($log, $rootScope, $window, this._config,  $mdTheming, this._setRootVar, this._persist);
-
+        }
+         
         return this._service;
     }
 }
