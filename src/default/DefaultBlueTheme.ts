@@ -1,3 +1,5 @@
+(() => {
+
 function configureDefaultBlueTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
@@ -54,3 +56,4 @@ function configureDefaultBlueTheme($mdThemingProvider: ng.material.IThemingProvi
 angular
     .module('pipTheme.Blue', [ 'ngMaterial' ])
     .config(configureDefaultBlueTheme);
+})();

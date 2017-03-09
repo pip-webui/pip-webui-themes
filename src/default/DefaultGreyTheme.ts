@@ -1,3 +1,5 @@
+(() => {
+
 function configureDefaultGreyTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
@@ -45,3 +47,4 @@ function configureDefaultGreyTheme($mdThemingProvider: ng.material.IThemingProvi
 angular
     .module('pipTheme.Grey', [ 'ngMaterial' ])
     .config(configureDefaultGreyTheme);
+})();

@@ -1,4 +1,5 @@
-function configureDefaultAmberTheme($mdThemingProvider: ng.material.IThemingProvider) {
+(() => {
+    function configureDefaultAmberTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',
     //     amber: 'Amber'
@@ -42,3 +43,4 @@ function configureDefaultAmberTheme($mdThemingProvider: ng.material.IThemingProv
 angular
     .module('pipTheme.Amber', [ 'ngMaterial' ])
     .config(configureDefaultAmberTheme);
+})();
