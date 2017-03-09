@@ -237,14 +237,11 @@ var ThemeProvider = (function () {
         enumerable: true,
         configurable: true
     });
-    ThemeProvider.prototype.save = function () {
-        var body = $('body');
-        body.addClass(this._config.theme);
-    };
     ThemeProvider.prototype.use = function (theme) {
         if (theme != null) {
             this._config.theme = theme;
-            this.save();
+            var body = $('body');
+            body.addClass(this._config.theme);
         }
         return this._config.theme;
     };
