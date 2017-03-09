@@ -1,5 +1,3 @@
-'use strict';
-
 function configureDefaultOrangeTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',

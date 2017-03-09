@@ -1,5 +1,3 @@
-'use strict';
-
 function configureBootBarnWarmTheme($mdThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',

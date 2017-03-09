@@ -1,5 +1,3 @@
-'use strict';
-
 function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
     //     THEME: 'Theme',

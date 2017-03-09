@@ -1,5 +1,3 @@
-'use strict';
-
 import './DefaultBlueTheme';
 import './DefaultPinkTheme';
 import './DefaultAmberTheme';
@@ -8,9 +6,12 @@ import './DefaultGreenTheme';
 import './DefaultNavyTheme';
 import './DefaultGreyTheme';
 
+function configureDefaultTheme($mdThemingProvider) {
+    $mdThemingProvider.setDefaultTheme('default');
+    $mdThemingProvider.alwaysWatchTheme(true);
+}
 
-angular
-    .module('pipTheme.Default', [
+angular.module('pipTheme.Default', [
         'ngMaterial',
         'pipTheme.Blue', 
         'pipTheme.Pink',
@@ -21,8 +22,3 @@ angular
         'pipTheme.Grey'
     ])
     .config(configureDefaultTheme);
-
-function configureDefaultTheme($mdThemingProvider) {
-    $mdThemingProvider.setDefaultTheme('default');
-    $mdThemingProvider.alwaysWatchTheme(true);
-}

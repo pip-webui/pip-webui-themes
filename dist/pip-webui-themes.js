@@ -1,5 +1,4 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}(g.pip || (g.pip = {})).themes = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-'use strict';
 configureBootBarnCoolTheme.$inject = ['$mdThemingProvider'];
 function configureBootBarnCoolTheme($mdThemingProvider) {
     var coolBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
@@ -41,7 +40,6 @@ angular
     .config(configureBootBarnCoolTheme);
 
 },{}],2:[function(require,module,exports){
-'use strict';
 configureBootBarnMonochromeTheme.$inject = ['$mdThemingProvider'];
 function configureBootBarnMonochromeTheme($mdThemingProvider) {
     var monochromeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
@@ -83,7 +81,6 @@ angular
     .config(configureBootBarnMonochromeTheme);
 
 },{}],3:[function(require,module,exports){
-'use strict';
 configureBootBarnWarmTheme.$inject = ['$mdThemingProvider'];
 function configureBootBarnWarmTheme($mdThemingProvider) {
     $mdThemingProvider.alwaysWatchTheme(true);
@@ -129,7 +126,7 @@ angular.module('pipTheme.BootBarn.Warm', ['ngMaterial'])
     .config(configureBootBarnWarmTheme);
 
 },{}],4:[function(require,module,exports){
-'use strict';
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./BootBarnCoolTheme");
 require("./BootBarnWarmTheme");
@@ -142,7 +139,7 @@ angular.module('pipTheme.BootBarn', [
 ]);
 
 },{"./BootBarnCoolTheme":1,"./BootBarnMonochromeTheme":2,"./BootBarnWarmTheme":3}],5:[function(require,module,exports){
-'use strict';
+"use strict";
 initTheme.$inject = ['pipTheme'];
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThemeRootVar = "$theme";
@@ -275,7 +272,6 @@ require("./ThemeService");
 __export(require("./ThemeService"));
 
 },{"./ThemeService":5}],7:[function(require,module,exports){
-'use strict';
 configureDefaultAmberTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultAmberTheme($mdThemingProvider) {
     var orangeBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
@@ -311,7 +307,6 @@ angular
     .config(configureDefaultAmberTheme);
 
 },{}],8:[function(require,module,exports){
-'use strict';
 configureDefaultBlueTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultBlueTheme($mdThemingProvider) {
     registerBlueTheme('default');
@@ -356,7 +351,6 @@ angular
     .config(configureDefaultBlueTheme);
 
 },{}],9:[function(require,module,exports){
-'use strict';
 configureDefaultGreenTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultGreenTheme($mdThemingProvider) {
     var greenBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
@@ -396,7 +390,6 @@ angular
     .config(configureDefaultGreenTheme);
 
 },{}],10:[function(require,module,exports){
-'use strict';
 configureDefaultGreyTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultGreyTheme($mdThemingProvider) {
     var thirdPartyPalette = $mdThemingProvider.extendPalette('grey', {
@@ -432,7 +425,6 @@ angular
     .config(configureDefaultGreyTheme);
 
 },{}],11:[function(require,module,exports){
-'use strict';
 configureDefaultNavyTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultNavyTheme($mdThemingProvider) {
     var greyPalette = $mdThemingProvider.extendPalette('grey', {
@@ -468,7 +460,6 @@ angular
     .config(configureDefaultNavyTheme);
 
 },{}],12:[function(require,module,exports){
-'use strict';
 configureDefaultOrangeTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultOrangeTheme($mdThemingProvider) {
     var RedBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
@@ -507,7 +498,6 @@ angular
     .config(configureDefaultOrangeTheme);
 
 },{}],13:[function(require,module,exports){
-'use strict';
 configureDefaultPinkTheme.$inject = ['$mdThemingProvider'];
 function configureDefaultPinkTheme($mdThemingProvider) {
     var PinkBackgroundPalette = $mdThemingProvider.extendPalette('grey', {
@@ -547,7 +537,7 @@ angular
     .config(configureDefaultPinkTheme);
 
 },{}],14:[function(require,module,exports){
-'use strict';
+"use strict";
 configureDefaultTheme.$inject = ['$mdThemingProvider'];
 Object.defineProperty(exports, "__esModule", { value: true });
 require("./DefaultBlueTheme");
@@ -557,8 +547,11 @@ require("./DefaultOrangeTheme");
 require("./DefaultGreenTheme");
 require("./DefaultNavyTheme");
 require("./DefaultGreyTheme");
-angular
-    .module('pipTheme.Default', [
+function configureDefaultTheme($mdThemingProvider) {
+    $mdThemingProvider.setDefaultTheme('default');
+    $mdThemingProvider.alwaysWatchTheme(true);
+}
+angular.module('pipTheme.Default', [
     'ngMaterial',
     'pipTheme.Blue',
     'pipTheme.Pink',
@@ -569,13 +562,9 @@ angular
     'pipTheme.Grey'
 ])
     .config(configureDefaultTheme);
-function configureDefaultTheme($mdThemingProvider) {
-    $mdThemingProvider.setDefaultTheme('default');
-    $mdThemingProvider.alwaysWatchTheme(true);
-}
 
 },{"./DefaultAmberTheme":7,"./DefaultBlueTheme":8,"./DefaultGreenTheme":9,"./DefaultGreyTheme":10,"./DefaultNavyTheme":11,"./DefaultOrangeTheme":12,"./DefaultPinkTheme":13}],15:[function(require,module,exports){
-'use strict';
+"use strict";
 function __export(m) {
     for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }

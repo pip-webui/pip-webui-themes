@@ -1,5 +1,3 @@
-'use strict';
-
 import './BootBarnCoolTheme';
 import './BootBarnWarmTheme';
 import './BootBarnMonochromeTheme';

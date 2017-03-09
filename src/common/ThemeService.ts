@@ -1,18 +1,8 @@
-'use strict';
+import { IThemeService, IThemeProvider } from './IThemeService';
 
 export let ThemeRootVar = "$theme";
 export let ThemeChangedEvent = "pipThemeChanged";    
 export let ThemeResetPage = "pipResetPage";    
-
-export interface IThemeService {
-    theme: string;
-    use(language: string): string;
-}
-
-export interface IThemeProvider extends IThemeService, ng.IServiceProvider {
-    setRootVar: boolean;
-    persist: boolean;
-}
 
 class ThemeConfig {
     public theme: string;
@@ -147,7 +137,7 @@ class ThemeProvider implements IThemeProvider {
         "ngInject";
 
         if (_.isNull(this._service) || _.isUndefined(this._service)) 
-            this._service = new ThemeService( $log, $rootScope, $window, this._config,  $mdTheming, this._setRootVar, this._persist);
+            this._service = new ThemeService($log, $rootScope, $window, this._config,  $mdTheming, this._setRootVar, this._persist);
 
         return this._service;
     }
