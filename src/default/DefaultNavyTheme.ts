@@ -1,4 +1,4 @@
-(() => {
+{
 
 function configureDefaultNavyTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
@@ -45,4 +45,4 @@ angular
     .module('pipTheme.Navy', [ 'ngMaterial' ])
     .config(configureDefaultNavyTheme);
     
-})();
+}

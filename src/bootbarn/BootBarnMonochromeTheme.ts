@@ -1,4 +1,4 @@
-(() => {
+{
 
 function configureBootBarnMonochromeTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
@@ -55,4 +55,4 @@ angular
     .module('pipTheme.BootBarn.Monochrome', [ 'ngMaterial' ])
     .config(configureBootBarnMonochromeTheme);
 
-})();
+}

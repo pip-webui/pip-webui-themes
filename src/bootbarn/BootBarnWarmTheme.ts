@@ -1,4 +1,4 @@
-(() => {
+{
 
 function configureBootBarnWarmTheme($mdThemingProvider) {
     // pipTranslateProvider.translations('en', {
@@ -59,7 +59,8 @@ function configureBootBarnWarmTheme($mdThemingProvider) {
 }
 
 
-angular.module('pipTheme.BootBarn.Warm', [ 'ngMaterial' ])
+angular
+    .module('pipTheme.BootBarn.Warm', [ 'ngMaterial' ])
     .config(configureBootBarnWarmTheme);
 
-})();
+}

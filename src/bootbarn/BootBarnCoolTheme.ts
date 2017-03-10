@@ -1,4 +1,4 @@
-(() => {
+{
 
 function configureBootBarnCoolTheme($mdThemingProvider: ng.material.IThemingProvider) {
     // pipTranslateProvider.translations('en', {
@@ -56,4 +56,4 @@ angular
     .module('pipTheme.BootBarn.Cool', [ 'ngMaterial' ])
     .config(configureBootBarnCoolTheme);
 
-})();
+}
