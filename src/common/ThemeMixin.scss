@@ -1,3 +1,70 @@
+
+@mixin generate-drilldown($color) {
+  .pip-drilldown-list-item {
+
+    & .pip-selected {
+      border-left: 5px solid $color !important;
+    }
+  }
+}
+
+@mixin generate-selected($color) {
+
+  md-list-item {
+
+    & .pip-selectable {
+      button {
+        border-left: none !important;
+      }
+
+      & .selected {
+        button {
+          border-left: $color !important;
+        }
+      }
+    }
+    
+      & .pip-selectable-tree {
+        button {
+          border-left: none!important;
+        }
+
+        & .selected {
+          & > button {
+            border-left: $color !important; //#2196f3;
+          }
+        }
+      }
+
+      & .pip-selectable.pip-simple-list-item {
+          border-left: none!important;
+
+        & .selected {
+            border-left: $color!important;
+        }
+      }
+
+      & .pip-selectable.pip-ref-list-item {
+
+        & .selected {
+            border-left: $color !important;
+
+        }
+      }
+  }
+  
+  md-list-item.pip-list-no-click {
+
+    & .pip-selectable {
+
+      & .selected .md-no-style {
+        border-left: $color !important;
+      }
+    }
+
+  }
+}
+
 @mixin generate-theme($name, $palette) {
   #{$name} {
     .color-primary {
@@ -69,71 +136,5 @@
 
     @include generate-selected (nth($palette, 3));
     @include generate-drilldown (nth($palette, 3));
-  }
-}
-
-@mixin generate-drilldown($color) {
-  .pip-drilldown-list-item {
-
-    & .pip-selected {
-      border-left: 5px solid $color !important;
-    }
-  }
-}
-
-@mixin generate-selected($color) {
-
-  md-list-item {
-
-    & .pip-selectable {
-      button {
-        border-left: none !important;
-      }
-
-      & .selected {
-        button {
-          border-left: $color !important;
-        }
-      }
-    }
-    
-      & .pip-selectable-tree {
-        button {
-          border-left: none!important;
-        }
-
-        & .selected {
-          & > button {
-            border-left: $color !important; //#2196f3;
-          }
-        }
-      }
-
-      & .pip-selectable.pip-simple-list-item {
-          border-left: none!important;
-
-        & .selected {
-            border-left: $color!important;
-        }
-      }
-
-      & .pip-selectable.pip-ref-list-item {
-
-        & .selected {
-            border-left: $color !important;
-
-        }
-      }
-  }
-  
-  md-list-item.pip-list-no-click {
-
-    & .pip-selectable {
-
-      & .selected .md-no-style {
-        border-left: $color !important;
-      }
-    }
-
   }
 }
