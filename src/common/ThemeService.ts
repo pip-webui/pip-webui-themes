@@ -23,6 +23,7 @@ class ThemeService implements IThemeService {
         setRootVar: boolean,
         persist: boolean,
     ) {
+        "ngInject";
         this._setRootVar = setRootVar;
         this._persist = persist;
         this._config = config;
@@ -142,7 +143,7 @@ class ThemeProvider implements IThemeProvider {
     ): ThemeService {
         "ngInject";
         if (_.isUndefined(this._service) || _.isNull(this._service))  {
-            this._service = new ThemeService($log, $rootScope, $window, this._config,  $mdTheming, this._setRootVar, this._persist);
+            this._service = new ThemeService($log, $rootScope, $window, $mdTheming, this._config, this._setRootVar, this._persist);
         }
          
         return this._service;
